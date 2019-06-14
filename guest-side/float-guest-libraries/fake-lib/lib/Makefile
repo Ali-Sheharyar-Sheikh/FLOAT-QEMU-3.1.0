@@ -27,7 +27,7 @@ LIBNAME = fakecuda
 LIB_FACU_VIRSER_OBJS = virtCudaLib.o transfer-virtio-serial.o
 HEADERS = transfer.h faCuda.h
 
-CC=g++
+CC=g++-5
 
 # Dependencies
 -include $(wildcard .*.d)

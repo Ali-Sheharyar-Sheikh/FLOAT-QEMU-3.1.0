@@ -8,9 +8,8 @@
 
 // Need to define this to fake NVCC compilation, else we will miss
 // out on some defines in <cuda_runtime.h> which will stop compilation
-
-//#define CUDA_DOUBLE_MATH_FUNCTIONS
 #define __CUDACC__
+
 #define __OUT
 #define __IN
 
