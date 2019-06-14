@@ -1,0 +1,44 @@
+x86_64-softmmu/qemu-system-x86_64 -m 1024 -enable-kvm -drive if=virtio,file='/home/float/Desktop/dev/float-host/qemu/vm-disk/ubuntu-vm-cuda10.1.qcow2',cache=none -cdrom '/home/float/DATA/cuda-10.1.iso'
+
+
+
+../configure --target-list=x86_64-softmmu --enable-debug --enable-kvm --enable-sdl --with-sdlabi=2.0 --disable-werror
+
+// change in cudaforward.cu function declaration change
+extern void __cudaRegisterVar(
+            void **fatCubinHandle,
+            char *hostVar,
+            char *deviceAddress,
+            const char *deviceName,
+            int ext,
+            size_t size, // change here from int to size_t
+            int constant,
+            int global
+            );
+
+// command for creating vm disk img, Execute this in the directory where you executed configure
+qemu-img create -f qcow2 test.qcow2 16G
+
+'/usr/local/cuda/bin/nvcc' cudaforward.cu --cuda -o cudaforward.cpp
+
+
+sudo x86_64-softmmu/qemu-system-x86_64 -smp 4 -device virtio-serial -device datatransfer-serial,id=dtransf_test,name=robineier -M pc-0.14 -boot order=d -display sdl -enable-kvm -cpu qemu64 -m 2048 -drive if=virtio,file='/home/float/Desktop/dev/float-host/qemu/vm-disk/ubuntu-vm-cuda10.1.qcow2',cache=none -device ivshmem,size=256m,shm=mymem -show-cursor
+
+
+
+'/home/float/Desktop/dev/float-host/qemu/vm-disk/ubuntu-vm-cuda10.1.qcow2'
+'/home/float/Desktop/dev/float-host/qemu/ub_cuda_10.qcow2'
+
+
+// Command to run qemu vm
+//cd '~/Desktop/dev/float-host/qemu/qemu-3.1.0-modif/build'
+sudo x86_64-softmmu/qemu-system-x86_64 -smp 4 -device virtio-serial -device datatransfer-serial,id=dtransf_test,name=robineier -M pc-0.14 -boot order=d -display sdl -enable-kvm -cpu qemu64 -m 2048 -drive if=virtio,file='/home/float/Desktop/dev/float-host/qemu/vm-disk/ubuntu-vm-cuda10.1 (copy).qcow2',cache=none -device ivshmem,size=256m,shm=mymem -show-cursor
+
+
+// command with new vm
+//cd '~/Desktop/dev/float-host/qemu/qemu-3.1.0-modif/build'
+sudo x86_64-softmmu/qemu-system-x86_64 -smp 4 -device virtio-serial -device datatransfer-serial,id=dtransf_test,name=robineier -M pc-0.14 -boot order=d -display sdl -enable-kvm -cpu qemu64 -m 2048 -drive if=virtio,file='/home/float/Desktop/dev/float-host/qemu/ub_cuda_10.qcow2',cache=none -device ivshmem,size=256m,shm=mymem -show-cursor
+
+
+
+
