@@ -30,6 +30,7 @@
 #include "qemu/help_option.h"
 #include "qemu/uuid.h"
 #include "sysemu/seccomp.h"
+#include "cudaforward.h"
 
 #ifdef CONFIG_SDL
 #if defined(__APPLE__) || defined(main)
@@ -4603,6 +4604,12 @@ int main(int argc, char **argv, char **envp)
         error_report("rom check and register reset failed");
         exit(1);
     }
+	
+	if (cudaforward_init() != CUDA_SUCCESS)
+	{
+		fprintf(stderr, "Unable to initialize the cudaforwarder.\n");
+		return -1;
+	}
 
     replay_start();
 

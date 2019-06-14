@@ -793,7 +793,7 @@ FreeBSD)
   audio_drv_list="oss"
   audio_possible_drivers="oss sdl pa"
   # needed for kinfo_getvmmap(3) in libutil.h
-  LIBS="-lutil $LIBS"
+  LIBS="-lutil -lcudart -lcuda $LIBS"
   # needed for kinfo_getproc
   libs_qga="-lutil $libs_qga"
   netmap=""  # enable netmap autodetect
@@ -879,6 +879,7 @@ Linux)
   vhost_scsi="yes"
   vhost_vsock="yes"
   QEMU_INCLUDES="-I\$(SRC_PATH)/linux-headers -I$PWD/linux-headers $QEMU_INCLUDES"
+  QEMU_INCLUDES="-I/usr/local/cuda/include $QEMU_INCLUDES"
   supported_os="yes"
   libudev="yes"
 ;;
@@ -5684,6 +5685,7 @@ fi
 if test "$solaris" = "no" ; then
     if $ld --version 2>/dev/null | grep "GNU ld" >/dev/null 2>/dev/null ; then
         LDFLAGS="-Wl,--warn-common $LDFLAGS"
+		LDFLAGS="-lcudart -lcuda -L/usr/local/cuda/lib64 $LDFLAGS"
     fi
 fi
 

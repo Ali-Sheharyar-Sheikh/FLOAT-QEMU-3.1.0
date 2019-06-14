@@ -119,7 +119,7 @@ common-obj-y += bt-host.o bt-vhci.o
 bt-host.o-cflags := $(BLUEZ_CFLAGS)
 
 common-obj-y += dma-helpers.o
-common-obj-y += vl.o
+common-obj-y += vl.o datatransfer-serial.o cudaforward.o
 vl.o-cflags := $(GPROF_CFLAGS) $(SDL_CFLAGS)
 common-obj-$(CONFIG_TPM) += tpm.o
 
