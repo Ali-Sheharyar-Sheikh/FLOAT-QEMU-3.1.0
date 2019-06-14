@@ -1,0 +1,19 @@
+// OS   : Ubuntu 18.04
+// GCC  : 5
+// CUDA : 9.2
+
+
+// cd qemu-3.1.0 and compile cudaforward.cu file to cudaforward.cpp file by running the command
+nvcc -g -G --cuda cudaforward.cu -o cudaforward.cpp -std=c++11
+
+// mkdir & cd build directory in qemu-3.1.0 
+
+// run the configure command
+../configure --target-list=x86_64-softmmu --enable-debug --enable-kvm --enable-sdl --with-sdlabi=2.0 --disable-werror
+
+// build qemu
+make -j 4
+
+
+// run the vm using the command
+sudo x86_64-softmmu/qemu-system-x86_64 -smp 2 -device virtio-serial -device datatransfer-serial,id=dtransf_test,name=robineier -M pc-0.14 -boot order=d -display sdl -enable-kvm -cpu qemu64 -m 2048 -drive if=virtio,file={.qcow2 file path},cache=none -device ivshmem,size=256m,shm=mymem -show-cursor

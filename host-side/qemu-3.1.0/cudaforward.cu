@@ -43,7 +43,7 @@ extern "C" {
             char *deviceAddress,
             const char *deviceName,
             int ext,
-            int size,
+            size_t size,
             int constant,
             int global
             );
