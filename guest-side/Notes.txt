@@ -1,0 +1,32 @@
+g++ -g -w -pg -fPIC -c -I/usr/local/cuda/include virtCudaLib.cpp -o virtCudaLib.o
+
+/usr/local/cuda/bin/nvcc -ccbin g++ -g -G -m64 -I'/usr/local/cuda/samples/common/inc'
+
+
+// command to replicate the compilation issue in cuda
+// cd to this directory '~/Downloads/float-guest-code/fake-lib/lib'
+g++ -g -w -pg -fPIC -c -I/usr/local/cuda/include virtCudaLib.cpp -o virtCudaLib.o
+
+
+// add the following in nvcc.profile
+-lfacuvirser -lhooks -lcudart
+
+/usr/local/cuda/include/crt/
+
+
+In file included from /usr/local/cuda/include/crt/common_functions.h:267:0,
+                 from /usr/local/cuda/include/cuda_runtime.h:115,
+/usr/local/cuda/include/crt/math_functions.h:9478:70: error: redeclaration ‘float std::abs(float)’ differs in ‘constexpr’ from previous declaration
+ xtern __DEVICE_FUNCTIONS_DECL__ __cudart_builtin__ float    __cdecl abs(float);
+
+
+// cuda10
+__host__ cudaError_t CUDARTAPI cudaLaunchKernel ( const void* func, dim3 gridDim, dim3 blockDim, void** args, size_t sharedMem, cudaStream_t stream )
+
+
+// cuda8
+__host__ cudaError_t CUDARTAPI cudaConfigureCall(dim3 gridDim, dim3 blockDim, size_t sharedMem, cudaStream_t stream)
+
+__host__ cudaError_t CUDARTAPI cudaSetupArgument(const void *arg, size_t size, size_t offset)
+
+__host__ cudaError_t CUDARTAPI cudaLaunch(const void *func){
