@@ -1,2 +1,4 @@
 
 host-side/qemu-3\.1\.0/build/
+
+host-side/qemu-3\.1\.0/cudaforward\.cpp
