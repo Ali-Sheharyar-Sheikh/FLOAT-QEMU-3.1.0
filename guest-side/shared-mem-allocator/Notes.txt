@@ -1,0 +1,5 @@
+// This directory contains the source code for the shared memory allocator executable.
+
+// Use the following command to build the executable:-
+gcc -g mem.c -o shared-mem-allocator -lpthread
+
