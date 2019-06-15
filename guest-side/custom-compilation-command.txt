@@ -1,0 +1,1 @@
+/usr/local/cuda-8.0/bin/nvcc -ccbin g++-5 -g -G -m64 -I/home/ubuntuvm/Desktop/Cuda-Samples/NVIDIA_CUDA-8.0_Samples/common/inc deviceQuery.cpp -o deviceQuery-debug
