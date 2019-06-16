@@ -1,0 +1,17 @@
+*** FLOAT 2.0 setup ***
+
+- configure command
+- run command 
+
+
+HOST side
+- qemu initial commit containing the latest qemu source of the latest stable release
+- FLOAT changes commit on the host side
+
+
+in qemu make a vm, install ubuntu os in it, install the same cuda driver in the vm
+
+GUEST side
+- ivshmem-guest-code (first build then manually insert the module in kernel)
+- cuda-fake-library, mem-hooks-library, change in nvcc.profile
+- shared memory allocator executable that is triggered by mem-hooks-library
