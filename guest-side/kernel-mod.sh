@@ -1,4 +1,4 @@
-cd '/home/vm-cuda10/Downloads/ivshmem-guest-code-master/kernel_module/uio'
+cd '/lib/modules/4.15.0-20-generic/kernel/drivers/uio'
 
 sudo modprobe uio
 sudo insmod uio_ivshmem.ko
