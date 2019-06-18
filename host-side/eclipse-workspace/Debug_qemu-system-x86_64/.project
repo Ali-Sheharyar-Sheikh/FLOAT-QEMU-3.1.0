@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>Debug_qemu-system-x86_64</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.cdt.core.cnature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>qemu-system-x86_64</name>
+			<type>1</type>
+			<location>/media/alish/Data-Linux/data-linux-dir/qemu-2.12.1-working/build/x86_64-softmmu/qemu-system-x86_64</location>
+		</link>
+	</linkedResources>
+</projectDescription>
