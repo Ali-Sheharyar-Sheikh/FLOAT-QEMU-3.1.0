@@ -1,3 +1,6 @@
+// To do: Add IDE configuration files similar to the ones in the HOST directory
+
+
 g++ -g -w -pg -fPIC -c -I/usr/local/cuda/include virtCudaLib.cpp -o virtCudaLib.o
 
 /usr/local/cuda/bin/nvcc -ccbin g++ -g -G -m64 -I'/usr/local/cuda/samples/common/inc'
