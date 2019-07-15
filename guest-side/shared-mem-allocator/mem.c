@@ -376,7 +376,7 @@ int main(){
     char * myfifo = "/tmp/myfifo";
     char buf[32];
     sem_t *sem = sem_open(SEM, O_CREAT, 777, 0);
-    sem_t *sem1 = sem_open(SEM_G, O_CREAT, 777, 1);
+    sem_t *sem1 = sem_open(SEM_G, O_CREAT, 777, 0);
     //printf("error : %s\n", strerror(errno));
     mkfifo(myfifo, 777);
     fd = open(myfifo, O_RDWR);
@@ -386,10 +386,11 @@ int main(){
         read(fd, buf, sizeof(input));
         input *args = (input*) buf;
         if (args->func==MALLOC){
-        	//printf("size  : %d\n", args->size);
+	    printf("MALLOC request, Size: %d\n", args->size);
             void *ptr = Mem_Alloc(args->size);
             args->offset = ptr-mm;
             write(fd, args, sizeof(input));
+			sem_post(sem1);
         }
         else if (args->func==FREE){
         	Mem_Free(args->size+mm);
