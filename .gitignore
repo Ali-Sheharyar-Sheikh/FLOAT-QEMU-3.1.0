@@ -2,3 +2,5 @@
 host-side/qemu-3\.1\.0/build/
 
 host-side/qemu-3\.1\.0/cudaforward\.cpp
+
+host-side/eclipse-workspace/Debug_qemu-system-x86_64/output\.log
