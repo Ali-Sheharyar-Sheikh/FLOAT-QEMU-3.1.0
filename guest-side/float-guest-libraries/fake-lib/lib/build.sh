@@ -1,5 +1,5 @@
-gcc -c -fPIC hooks.c -o hooks.o
-gcc -shared -Wl,-soname,libhooks.so -o libhooks.so  hooks.o
+gcc -c -g -fPIC hooks.c -o hooks.o
+gcc -shared -g -Wl,-soname,libhooks.so -o libhooks.so  hooks.o
 sudo cp libhooks.so /usr/local/lib
 make
 g++ -g -w -pg -fPIC -Wall -c -I/usr/local/cuda/include transfer-virtio-serial.c -o transfer-virtio-serial.o
