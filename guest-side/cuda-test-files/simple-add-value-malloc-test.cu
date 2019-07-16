@@ -29,8 +29,8 @@ int main()
     a = (int*)malloc(sizeof(int));
     b = (int*)malloc(sizeof(int));
     c = (int*)malloc(sizeof(int));
-    *a=2;
-    *b=7;
+    *a=300;
+    *b=117;
 
     // copy inputs to device
     cudaMemcpy(d_a,a,size,cudaMemcpyHostToDevice);
@@ -42,9 +42,14 @@ int main()
 
     // copy result back to host
     cudaMemcpy(c,d_c,size,cudaMemcpyDeviceToHost);
-
-    printf("%d\n",*c);
+	
+	printf("HOST computation!\n");
+    printf("A: %d + B: %d\n",*a,*b);
+	printf("Result C: %d.\n",*c);
     
+	free(a);
+	free(b);
+	free(c);
     cudaFree(d_a);
     cudaFree(d_b);
     cudaFree(d_c);
