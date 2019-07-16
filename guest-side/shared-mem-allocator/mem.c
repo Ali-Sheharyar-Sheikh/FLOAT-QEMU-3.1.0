@@ -1,5 +1,8 @@
 #include "mem.h"
 
+void* ptr_shm_start = NULL;
+void* ptr_shm_allocation_start = NULL;
+void* ptr_shm_end = NULL;
 
 int Mem_Init(int sizeOfRegion){
 	sizeT = sizeOfRegion-(1024*1024);
@@ -10,6 +13,9 @@ int Mem_Init(int sizeOfRegion){
         	close (fd_shared);
         	exit (-1);
     	}
+		ptr_shm_start = mm;
+		ptr_shm_allocation_start = ptr_shm_start + (1024 * 1024);
+		ptr_shm_end = (ptr_shm_start) + (256 * 1024 * 1024);
     	mm=mm+(1024*1024);
 		newSpace(sizeT);
 		return 0; 
@@ -59,7 +65,7 @@ fL *newSpace(int sizeR) {
 		//printf("Hereheader\n");
 		fL *node = mm;
 		node->size = sizeR-32;
-		//printf("node size : %d : %d\n", node->size, mm);fflush(stdout);
+		//printf("node size : %d : %d\n", node->size, mm);fflush(stderr);
 		node->magic = 0;
 		node->available = 1;
 		node->right = -1;
@@ -87,7 +93,7 @@ fL *newSpace(int sizeR) {
 			break;
 	}
 	if (node->size - sizeR < 0 || (node->size == sizeR && node->magic == binaryH)){
-		//printf("returningNull : %d : %d\n", node->size, sizeR);fflush(stdout);
+		//printf("returningNull : %d : %d\n", node->size, sizeR);fflush(stderr);
 		return NULL;
 	}
 	removeBnode(node);
@@ -277,11 +283,11 @@ fL *addLinked (fL *node, int size) {
 		node->available = 0;
 		return node;
 	}
-	//printf("hereinlinked1 : %d\n", linkedT);fflush(stdout);
+	//printf("hereinlinked1 : %d\n", linkedT);fflush(stderr);
 	void *nodevT = (mm+linkedT);
 	fL *nodeT = nodevT;
 	void *newvN = (mm+node->magic+node->size-size);
-	//printf("random stuff : %d\n", node->magic+node->size-size);fflush(stdout);
+	//printf("random stuff : %d\n", node->magic+node->size-size);fflush(stderr);
 	fL *newN = newvN;
 	newN->size = size;
 	newN->left = -1;
@@ -291,7 +297,7 @@ fL *addLinked (fL *node, int size) {
 	newN->bprev = -1;
 	newN->available = 0;
 	newN->magic = (node->magic+node->size-size);
-	//printf("hereinlinked2\n");fflush(stdout);
+	//printf("hereinlinked2\n");fflush(stderr);
 	if (node->magic == nodeT->magic){
 		linkedT = newN->magic;
 	}
@@ -311,7 +317,7 @@ int Mem_Free(void *ptr) {
 	}
 	fL *nodeprv = (mm+node->prev);
 	fL *nodenxt = (mm+node->size+node->magic);
-	//printf("check : %d : %d\n", nodeprv->size, nodenxt->size);fflush(stdout);
+	//printf("check : %d : %d\n", nodeprv->size, nodenxt->size);fflush(stderr);
 	if (nodenxt->available==1 && nodeprv->available==1) {    
 		removeBnode(nodeprv);
 		removeBnode(nodenxt);
@@ -354,7 +360,7 @@ void Mem_Dump() {
 		printf("->");
 		node = mm+node->prev;
 	}
-	printf("\n");fflush(stdout);
+	printf("\n");fflush(stderr);
 }
 
 void initNode(void *node){
@@ -370,38 +376,54 @@ void initNode(void *node){
 }
 
 
-int main(){
+int main()
+{
+	fprintf(stderr, "** SHARED MEMORY ALLOCATOR **\n");
 	Mem_Init(256*1024*1024);
+	fprintf(stderr, "SHM START: %p\nSHM ALLOC START: %p\nSHM END: %p\n",ptr_shm_start,ptr_shm_allocation_start,ptr_shm_end);
 	int fd;
     char * myfifo = "/tmp/myfifo";
-    char buf[32];
+    char buf[50] = {'\0'};
     sem_t *sem = sem_open(SEM, O_CREAT, 777, 0);
     sem_t *sem1 = sem_open(SEM_G, O_CREAT, 777, 0);
     //printf("error : %s\n", strerror(errno));
     mkfifo(myfifo, 777);
-    fd = open(myfifo, O_RDWR);
+    fd = open(myfifo, O_RDWR|O_CREAT);
     while(1){
-    	//printf("done: %d", *sem1);fflush(stdout);
+    	//printf("done: %d", *sem1);fflush(stderr);
         sem_wait(sem);
-		input objInput;
-        read(fd, &objInput, sizeof(input));
-        input *args = (input*) &objInput;
+		//input objInput;
+		fflush(stderr);
+		fflush(stdout);
+		buf[0]='\0';
+        read(fd, buf, 12);
+        input *args = (input*) buf;
         if (args->func==MALLOC)
 		{
 			void *ptr = Mem_Alloc(args->size);		    
-			printf("MALLOC request, Size: %d, PTR: %p\n", args->size, ptr);
-            args->offset = ptr-mm;
-            write(fd, args, sizeof(input));
+            args->offset = ptr - mm;
+            printf("MALLOC request, Size: %d, PTR: %p, offset: %d\n", args->size, ptr, args->offset);
+            write(fd, args, 12);
 			sem_post(sem1);
         }
         else if (args->func==FREE)
 		{
-			void * free_ptr = args->size+mm;
-		 	printf("FREE request, PTR: %p\n", free_ptr);
-        	Mem_Free(free_ptr);
-        	args->offset=1;
-        	write(fd, args, sizeof(input));
-			sem_post(sem1);
+			void * free_ptr = args->size + mm;
+			if( (free_ptr > ptr_shm_end) && (free_ptr < ptr_shm_allocation_start))
+			{
+				fprintf(stderr, "ERROR: Invalid free() call, ptr: %p, size: %d.\n",free_ptr,args->size);
+				args->offset=1;
+    	    	write(fd, args, 12);
+    	    	sem_post(sem1);
+			}
+		 	else
+			{
+				printf("FREE request, PTR: %p, offset: %d\n", free_ptr, args->size);			
+	        	Mem_Free(free_ptr);
+    	    	args->offset=1;
+    	    	write(fd, args, 12);
+				sem_post(sem1);
+			}
         }
         //Mem_Dump();
     }
