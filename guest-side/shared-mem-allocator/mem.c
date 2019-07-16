@@ -383,19 +383,25 @@ int main(){
     while(1){
     	//printf("done: %d", *sem1);fflush(stdout);
         sem_wait(sem);
-        read(fd, buf, sizeof(input));
-        input *args = (input*) buf;
-        if (args->func==MALLOC){
-	    printf("MALLOC request, Size: %d\n", args->size);
-            void *ptr = Mem_Alloc(args->size);
+		input objInput;
+        read(fd, &objInput, sizeof(input));
+        input *args = (input*) &objInput;
+        if (args->func==MALLOC)
+		{
+			void *ptr = Mem_Alloc(args->size);		    
+			printf("MALLOC request, Size: %d, PTR: %p\n", args->size, ptr);
             args->offset = ptr-mm;
             write(fd, args, sizeof(input));
 			sem_post(sem1);
         }
-        else if (args->func==FREE){
-        	Mem_Free(args->size+mm);
+        else if (args->func==FREE)
+		{
+			void * free_ptr = args->size+mm;
+		 	printf("FREE request, PTR: %p\n", free_ptr);
+        	Mem_Free(free_ptr);
         	args->offset=1;
         	write(fd, args, sizeof(input));
+			sem_post(sem1);
         }
         //Mem_Dump();
     }

@@ -3,14 +3,13 @@
 __global__ void setValue(int* c)
 {
     printf("DEVICE computation!\n");
-    *c = 18;
+    *c = 25;
     printf("Result C: %d!\n",*c);
     printf("----\n");
 }
 
 int main()
 { 
-    printf("** Simple Set Value Malloc Test **\n");
     int *c; // host copies of a,b,c
     int *d_c; // device copies of a,b,c
     int size = sizeof(int);
@@ -32,11 +31,9 @@ int main()
     // copy result back to host
     cudaMemcpy(c,d_c,size,cudaMemcpyDeviceToHost);
     
-    printf("Host Computation!\n");
-
-    printf("Result C: %d\n",*c);
-    printf("----\n");
+    fprintf(stderr,"Result C: %d\n",*c);
     
+	free(c);
     cudaFree(d_c);
 
     return 0;
