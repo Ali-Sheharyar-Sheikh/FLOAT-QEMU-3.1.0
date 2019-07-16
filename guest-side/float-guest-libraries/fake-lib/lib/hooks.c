@@ -14,6 +14,7 @@ sem_t *sem;
 sem_t *sem1;
 int fd_fifo;
 
+///*
 void* malloc (size_t size)
 {
  	//fprintf(stderr,"- MALLOC request size: %ld, counter: %d.\n", size, counter);
@@ -30,7 +31,7 @@ void* malloc (size_t size)
      	read(fd_fifo, &in, 12);
  		offset = in.offset;
 		void* return_ptr = memptr + (1024*1024) + in.offset;
-		fprintf(stderr, "SHARED Malloc Size: %d, PTR: %p, offset: %d\n", in.size, return_ptr, in.offset );
+		//fprintf(stderr, "SHARED Malloc Size: %d, PTR: %p, offset: %d\n", in.size, return_ptr, in.offset );
  		return return_ptr;
  	}
  	void *return_cuda = __libc_malloc(size);
@@ -38,6 +39,7 @@ void* malloc (size_t size)
 	//fprintf(stderr, "malloc(%d) = %p\n", (int)size, return_cuda);
  	return return_cuda;	//glibc specific weak point
  }
+
 
 void *calloc(size_t nelem, size_t elsize){
 	
@@ -63,9 +65,10 @@ void *realloc(void* ptr, size_t size){
 		sem_post(sem);
 		sem_wait(sem1);
      	read(fd_fifo, &in, 12);
-		fprintf(stderr,"SHARED Free PTR: %p, offset: %d\n",ptr, free_offset);
+		//fprintf(stderr,"SHARED Free PTR: %p, offset: %d\n",ptr, free_offset);
  	}
  	else
 	__libc_free(ptr);
 	//fprintf(stderr,"free(%p)\n",ptr);
  }
+ //*/
