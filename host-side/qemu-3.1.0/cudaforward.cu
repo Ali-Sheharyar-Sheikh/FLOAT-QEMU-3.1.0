@@ -511,12 +511,31 @@ int cudaforward_init(void){
     registerLogger(OutputLog);
     sem_init(&sem_in, 0, 0);
     sem_init(&sem_out, 0, 0);
-    if ((fd=shm_open("mymem", O_CREAT|O_RDWR|O_EXCL, S_IREAD | S_IWRITE)) > 0){} //shared memory stuff
-    else if ((fd=shm_open("mymem", O_CREAT|O_RDWR, S_IREAD | S_IWRITE)) > 0){} 
-    else {
-        fprintf(stderr, "ERROR: cannot open file\n");
-        exit(-1);
+    
+    if( access( "/dev/shm/mymem1", F_OK ) != -1 ) 
+	{
+		fprintf(stderr, "Opening mymem1 file!\n");
+    	if ((fd=shm_open("mymem1", O_CREAT|O_RDWR|O_EXCL, S_IREAD | S_IWRITE)) > 0){} //shared memory stuff
+    	else if ((fd=shm_open("mymem1", O_CREAT|O_RDWR, S_IREAD | S_IWRITE)) > 0){} 
+    	else 
+    	{
+        	fprintf(stderr, "ERROR: cannot open file\n");
+        	exit(-1);
+    	}
     }
+    else
+    {
+    	fprintf(stderr, "Opening mymem file!\n");
+    	if ((fd=shm_open("mymem", O_CREAT|O_RDWR|O_EXCL, S_IREAD | S_IWRITE)) > 0){} //shared memory stuff
+    	else if ((fd=shm_open("mymem", O_CREAT|O_RDWR, S_IREAD | S_IWRITE)) > 0){} 
+    	else 
+    	{
+        	fprintf(stderr, "ERROR: cannot open file\n");
+        	exit(-1);
+    	}
+    }
+    
+    
     if ((msg=mmap(NULL, 256*1024*1024, PROT_READ|PROT_WRITE, MAP_SHARED, fd, 0))<0){
         fprintf(stderr, "ERROR: cannot mmap file\n");
     }
