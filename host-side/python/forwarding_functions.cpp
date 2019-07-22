@@ -2323,10 +2323,10 @@ if(recCallHdr->callID == facudaMemcpy){
 
     //        fprintf(stderr, "In cudaMemcpyHostToDevice!\noffset: %d\ncount: %d\nsrc: %x\n", cudaMemcpyStructVar->offset, cudaMemcpyStructVar->count, cudaMemcpyStructVar->src);
 
-        	if(inArgs->msgSz == 0)
+        	if(cudaMemcpyStructVar->offset == 0)
         		memStart = (uint8_t*)msg + sizeof(struct cudaMemcpyStruct);
         	else
-        	    memStart = (uint8_t*)msg + (1024*1024) + inArgs->msgSz;
+        	    memStart = (uint8_t*)msg + (1024*1024) + (uint32_t)cudaMemcpyStructVar->offset;
         	cudaMemcpyStructVar->callheader.respError = cudaMemcpy(cudaMemcpyStructVar->dst, memStart, cudaMemcpyStructVar->count, cudaMemcpyHostToDevice);
 
             *respMsgSz = sizeof(struct cudaMemcpyStruct);
@@ -2341,10 +2341,10 @@ if(recCallHdr->callID == facudaMemcpy){
 
             *respMsgSz = sizeof(struct cudaMemcpyStruct) + cudaMemcpyStructVar->count;
             *respMsg = malloc(*respMsgSz);
-            if(inArgs->msgSz == 0)
+            if(cudaMemcpyStructVar->offset == 0)
             	memStart = (uint8_t*)msg + sizeof(struct cudaMemcpyStruct);
             else
-            	memStart = (uint8_t*)msg + (1024*1024) + inArgs->msgSz;
+            	memStart = (uint8_t*)msg + (1024*1024) + (uint32_t)cudaMemcpyStructVar->offset;
             printf("sizeof struct cudaMemcpuStuct: %zu\n",sizeof(struct cudaMemcpyStruct));
             cudaMemcpyStructVar->callheader.respError = cudaMemcpy(memStart, cudaMemcpyStructVar->src, cudaMemcpyStructVar->count, cudaMemcpyDeviceToHost);
 
