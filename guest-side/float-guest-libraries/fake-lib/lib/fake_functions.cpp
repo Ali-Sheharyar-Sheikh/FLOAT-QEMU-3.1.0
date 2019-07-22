@@ -5315,7 +5315,7 @@ __host__ cudaError_t CUDARTAPI cudaMemcpy(void *dst, const void *src, size_t cou
     int i;
     cudaError_t respError = cudaErrorApiFailureBase;
     struct cudaMemcpyStruct *msg_p;
-
+	bool bOutOfSharedMemory = true;
     switch(kind){
         case cudaMemcpyHostToHost:
 
@@ -5342,7 +5342,10 @@ __host__ cudaError_t CUDARTAPI cudaMemcpy(void *dst, const void *src, size_t cou
                 memcpy(memptr+sizeof(struct cudaMemcpyStruct),src,count);
             }
             else
-                offset = (uint8_t*)src-(uint8_t*)memptr-(1024*1024);
+            {
+                offset = 0;
+                msg_p->offset = (uint8_t*)src-(uint8_t*)memptr-(1024*1024);
+            }
             //printf("off : %u\n", src);
             //printf("off1 : %u\n", offset1);
             //for(i = 0; i < count; i++){
@@ -5382,7 +5385,11 @@ __host__ cudaError_t CUDARTAPI cudaMemcpy(void *dst, const void *src, size_t cou
                 offset = 0;
             }
             else
-                offset = (uint8_t*)dst-(uint8_t*)memptr-(1024*1024);
+            {
+            	bOutOfSharedMemory = false;
+            	offset = 0;
+            	msg_p->offset = (uint8_t*)dst-(uint8_t*)memptr-(1024*1024);
+            }
             //printf("off : %u\n", dst);
             //printf("off1 : %u\n", offset1);
             if(sendMessage((void*) msg_p, sizeof(struct cudaMemcpyStruct)) == FACUDA_ERROR)
@@ -5401,7 +5408,8 @@ __host__ cudaError_t CUDARTAPI cudaMemcpy(void *dst, const void *src, size_t cou
             //dst = ((uint8_t*)msg_p+sizeof(struct cudaMemcpyStruct));
             //printf("%d\n", *((int*)dst));
             //
-            if (offset==0) memcpy(dst,memptr+sizeof(struct cudaMemcpyStruct),count);
+            if ( (offset == 0) && bOutOfSharedMemory)
+            	memcpy(dst,memptr+sizeof(struct cudaMemcpyStruct),count);
             //for(i = 0; i < count; i++){
             //    ((uint8_t*)dst)[i] = ((uint8_t*)msg_p)[sizeof(struct cudaMemcpyStruct) + i];
             //}
