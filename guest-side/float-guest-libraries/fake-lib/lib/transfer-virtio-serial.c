@@ -44,6 +44,7 @@ void __attribute__((constructor)) init(void){
         exit (-1);
     }
     memend = (uint8_t*)memptr+(SIZE*1024*1024);
+    fprintf(stderr, "SHM START: %p\nSHM END: %p\n",memptr,memend);
     sem = sem_open(SEM, O_CREAT, 777, 0);
     sem1 = sem_open("/sem3", O_CREAT, 777, 0);
     //printf("error : %s\n", strerror(errno));fflush(stdout);

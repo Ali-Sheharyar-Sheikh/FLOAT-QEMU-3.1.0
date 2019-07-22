@@ -17,3 +17,6 @@ make -j 4
 
 // run the vm using the command
 sudo x86_64-softmmu/qemu-system-x86_64 -smp 2 -device virtio-serial -device datatransfer-serial,id=dtransf_test,name=robineier -M pc-0.14 -boot order=d -display sdl -enable-kvm -cpu qemu64 -m 2048 -drive if=virtio,file={.qcow2 file path},cache=none -device ivshmem,size=256m,shm=mymem -show-cursor
+
+// command to run 2 vm in parallel
+sudo x86_64-softmmu/qemu-system-x86_64 -smp 2 -device virtio-serial -device datatransfer-serial,id=dtransf_test,name=robineier -M pc-0.14 -boot order=d -display sdl -enable-kvm -cpu qemu64 -m 2048 -drive if=virtio,file='/media/alish/Data-Linux/data-linux-dir/qemu-disk-file-bk/test-multivm-test.qcow2',cache=none -device ivshmem,size=256m,shm=mymem1 -show-cursor
