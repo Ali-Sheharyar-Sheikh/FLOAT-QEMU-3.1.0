@@ -4666,9 +4666,9 @@ __host__ cudaError_t CUDARTAPI cudaEventElapsedTime(float *ms, cudaEvent_t start
 }
 
 __host__ cudaError_t CUDARTAPI cudaSetupArgument(const void *arg, size_t size, size_t offset){
-    
+    VirtioSem objVirtioSem;
     //fprintf(stderr, "Called cudaSetupArgument with size %d offset %d\n", size, offset);
-
+	fprintf(stderr,"*cudaSetupArgument\n");
     cudaError_t respError;
 
     struct cudaSetupArgumentStruct *msg_p = (struct cudaSetupArgumentStruct*) memptr;
@@ -4734,7 +4734,8 @@ __host__ cudaError_t CUDARTAPI cudaFuncSetCacheConfig(const char *func, enum cud
 }
 
 __host__ cudaError_t CUDARTAPI cudaConfigureCall(dim3 gridDim, dim3 blockDim, size_t sharedMem, cudaStream_t stream){
-
+		VirtioSem objVirtioSem;
+	fprintf(stderr,"*cudaConfigureCall\n");
     /*fprintf(stdout, "Called cudaConfigureCall() with\ngridDim {%d, %d, %d}\nblockDim {%d, %d, %d}\nsharedMem %d\nstream %d\n", 
             gridDim.x, 
             gridDim.y, 
@@ -4772,7 +4773,8 @@ __host__ cudaError_t CUDARTAPI cudaConfigureCall(dim3 gridDim, dim3 blockDim, si
 }
 
 __host__ cudaError_t CUDARTAPI cudaLaunch(const void *entry){
-
+	VirtioSem objVirtioSem;
+	fprintf(stderr,"*cudaLaunch\n");
     cudaError_t respError;
 
     struct cudaLaunchStruct *msg_p = (struct cudaLaunchStruct*) memptr;
@@ -4900,7 +4902,8 @@ __host__ cudaError_t CUDARTAPI cudaSetDoubleForHost(double *d){
 }
 
 __host__ cudaError_t CUDARTAPI cudaMalloc(void **devPtr, size_t size){
-
+	VirtioSem objVirtioSem;
+	fprintf(stderr,"*cudaMalloc\n");
     cudaError_t respError = cudaErrorApiFailureBase;
     size_t sent;
 
@@ -4920,7 +4923,6 @@ __host__ cudaError_t CUDARTAPI cudaMalloc(void **devPtr, size_t size){
 
     *devPtr = msg_p->devPtr;
     respError = msg_p->callheader.respError;
-
 
     return respError;
 }
@@ -4985,6 +4987,9 @@ __host__ cudaError_t CUDARTAPI cudaMallocPitch(void **devPtr, size_t *pitch, siz
 
 __host__ cudaError_t CUDARTAPI cudaFree(void *devPtr){
 
+		VirtioSem objVirtioSem;
+	
+	fprintf(stderr,"*cudaFree\n");
     cudaError_t respError = cudaErrorApiFailureBase;
     size_t sent;
 
@@ -5005,7 +5010,7 @@ __host__ cudaError_t CUDARTAPI cudaFree(void *devPtr){
     devPtr = msg_p->devPtr;
     respError = msg_p->callheader.respError;
 
-
+	
     return respError;
 }
 
@@ -5312,6 +5317,8 @@ __host__ cudaError_t CUDARTAPI cudaMemcpy(void *dst, const void *src, size_t cou
     //clock_t begin,end;
     //double time_spent;
     //begin = clock();
+    VirtioSem objVirtioSem;
+    fprintf(stderr,"*cudaMemcpy\n");
     int i;
     cudaError_t respError = cudaErrorApiFailureBase;
     struct cudaMemcpyStruct *msg_p;

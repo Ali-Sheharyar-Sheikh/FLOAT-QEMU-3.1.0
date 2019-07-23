@@ -43,9 +43,9 @@ int main()
     // copy result back to host
     cudaMemcpy(c,d_c,size,cudaMemcpyDeviceToHost);
 	
-	printf("HOST computation!\n");
-    printf("A: %d + B: %d\n",*a,*b);
-	printf("Result C: %d.\n",*c);
+	fprintf(stderr,"HOST computation!\n");
+    fprintf(stderr,"A: %d + B: %d\n",*a,*b);
+	fprintf(stderr,"Result C: %d.\n",*c);
     
 	free(a);
 	free(b);
