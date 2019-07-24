@@ -389,8 +389,11 @@ int main()
     //printf("error : %s\n", strerror(errno));
     mkfifo(myfifo, 777);
     fd = open(myfifo, O_RDWR|O_CREAT);
+    int malloc_counter= 0;
+    int free_counter = 0;
     while(1){
     	//printf("done: %d", *sem1);fflush(stderr);
+    	fprintf(stderr,"** Malloc Counter: %d, Free Counter: %d\n", malloc_counter, free_counter);
         sem_wait(sem);
 		//input objInput;
 		fflush(stderr);
@@ -404,6 +407,7 @@ int main()
             args->offset = ptr - mm;
             printf("MALLOC request, Size: %d, PTR: %p, offset: %d\n", args->size, ptr, args->offset);
             write(fd, args, 12);
+            malloc_counter++;
 			sem_post(sem1);
         }
         else if (args->func==FREE)
@@ -422,6 +426,7 @@ int main()
 	        	Mem_Free(free_ptr);
     	    	args->offset=1;
     	    	write(fd, args, 12);
+    	    	free_counter++;
 				sem_post(sem1);
 			}
         }

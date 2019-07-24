@@ -38,12 +38,15 @@ typedef struct {
 	void *pointer;
 }output;
 
+extern FILE *device_node;
 extern void* memptr;
 extern void* memend;
 extern uint offset;
+extern int fd;
 extern int fd_shared;
 extern sem_t *sem;
 extern sem_t *sem1;
+extern sem_t *sem_virtio;
 extern int fd_fifo;
 /* Hello world. */
 void testFunction(void);

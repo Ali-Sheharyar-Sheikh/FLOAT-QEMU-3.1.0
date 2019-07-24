@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-__global__ void add(int* a, int* b, int* c)
+__global__ void add1(int* a, int* b, int* c)
 {
     printf("Param a value: %d\n",*a);
     printf("Param b value: %d\n",*b);
@@ -29,16 +29,20 @@ int main()
     a = (int*)malloc(sizeof(int));
     b = (int*)malloc(sizeof(int));
     c = (int*)malloc(sizeof(int));
-    *a=300;
-    *b=117;
+    
+    for(int i=1;i<500;i++)
+    {
+   
+   	*a=i;
+   	*b=300;
 
     // copy inputs to device
     cudaMemcpy(d_a,a,size,cudaMemcpyHostToDevice);
     cudaMemcpy(d_b,b,size,cudaMemcpyHostToDevice);
-    cudaMemcpy(d_c,c,size,cudaMemcpyHostToDevice);
+    //cudaMemcpy(d_c,c,size,cudaMemcpyHostToDevice);
 
-    // launch add() kernel on GPU
-    add<<<1,1>>>(d_a,d_b,d_c);
+    // launch add1() kernel on GPU
+    add1<<<1,1>>>(d_a,d_b,d_c);
 
     // copy result back to host
     cudaMemcpy(c,d_c,size,cudaMemcpyDeviceToHost);
@@ -46,6 +50,8 @@ int main()
 	fprintf(stderr,"HOST computation!\n");
     fprintf(stderr,"A: %d + B: %d\n",*a,*b);
 	fprintf(stderr,"Result C: %d.\n",*c);
+   
+    }
     
 	free(a);
 	free(b);
