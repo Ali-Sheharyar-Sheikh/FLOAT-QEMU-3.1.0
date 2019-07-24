@@ -47,6 +47,7 @@ extern int fd_shared;
 extern sem_t *sem;
 extern sem_t *sem1;
 extern sem_t *sem_virtio;
+extern sem_t *sem_shared_access;
 extern int fd_fifo;
 /* Hello world. */
 void testFunction(void);

@@ -36,27 +36,51 @@
 
 class VirtioSem
 {	
+	FILE* m_pFILE = NULL;
 public:
 	
 	VirtioSem()
 	{
 		sem_wait(sem_virtio);
+		fprintf(stderr,"MUTEX acquired\n");
+		
 		// Open virtIo pipeline
-		device_node = fopen(CHAR_DEV, "r+");
-    	if(device_node == NULL)
-   	 {
-        fprintf(stderr, "Failed opening the device node.\n");
-        exit(EXIT_FAILURE);
-   	 }
+		while( 1 )
+    	{
+    		try
+    		{
+    			if( access( "/dev/vport0p1", F_OK ) != -1 )
+    			{
+    				m_pFILE = fopen("/dev/vport0p1", "w+");
+    				if(m_pFILE == NULL)
+    					fprintf(stderr, "ERROR: Failed opening the device node.\n");
+    				else
+    					break;	
+    			}
+    			else
+    			fprintf(stderr, "ERROR: /dev/vport0p1 file doesn't exists.\n");
+    		}
+    		catch(...)
+    		{
+		        fprintf(stderr, "ERROR: Failed opening the device node.\n");
+		    }
+	    }
+	    fprintf(stderr,"OPEN success the device node.\n");
     
    	 // Get virtIO file descriptor
-    	fd = fileno(device_node);
+    	fd = fileno(m_pFILE);
 	}
 	
 	~VirtioSem()
 	{
-		fclose(device_node);
+		while(fclose(m_pFILE) != 0)
+		{
+			fprintf(stderr,"ERROR: Failed closing the device node.\n");
+		}
+		fprintf(stderr,"CLOSE success the device node.\n");
+		close(fd);
 		sem_post(sem_virtio);
+		fprintf(stderr, "MUTEX released\n");
 	}
 	
 

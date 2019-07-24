@@ -25,6 +25,9 @@ char *myfifo = "/tmp/myfifo"; // Pipeline for communicating with shared memory a
 sem_t *sem;		// Semaphore 1 for shared memory calls synchronization
 sem_t *sem1;	// Semaphore 2 for shared memory calls synchronization
 sem_t *sem_virtio;
+sem_t *sem_shared_access;
+
+
 // Library constructor
 // Called on library load or application startup
 void __attribute__((constructor)) init(void)
@@ -54,6 +57,7 @@ void __attribute__((constructor)) init(void)
     sem = sem_open(SEM, O_CREAT, 777, 0);
     sem1 = sem_open("/sem3", O_CREAT, 777, 0);
     sem_virtio = sem_open("/sem4", O_CREAT, 777, 1);
+    sem_shared_access = sem_open("/sem5", O_CREAT, 777, 1);
    	fd_fifo = open(myfifo, O_RDWR);
 }
 
@@ -61,12 +65,14 @@ void __attribute__((constructor)) init(void)
 // Called on library unload or application exit
 void __attribute((destructor)) deinit(void)
 {
-	close(fd);
+	//close(fd);
 	munmap(memptr, SIZE*1024*1024);
     close(fd_shared);
     close(fd_fifo);
 	sem_close(sem);
     sem_close(sem1);
+    sem_close(sem_virtio);
+    sem_close(sem_shared_access);
 }
 
 // Write in device virtIO
@@ -81,7 +87,7 @@ int sendMessage(void *msg_buf, size_t len)
 // Read from device virtIO
 size_t recvMessage(void **msg_buf)
 {
-	//fprintf(stderr, "-RECV MESSAGE\n");
+	fprintf(stderr, "-RECV MESSAGE\n");
 	uint32_t msg_sz=0;
 
     if(read(fd, &msg_sz, 4) < 4){
