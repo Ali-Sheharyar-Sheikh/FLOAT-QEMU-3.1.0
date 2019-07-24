@@ -49,6 +49,8 @@ extern sem_t *sem1;
 extern sem_t *sem_virtio;
 extern sem_t *sem_shared_access;
 extern int fd_fifo;
+extern int simple_malloc;
+
 /* Hello world. */
 void testFunction(void);
 

@@ -43,7 +43,7 @@ public:
 	{
 		sem_wait(sem_virtio);
 		fprintf(stderr,"MUTEX acquired\n");
-		
+		simple_malloc = 1;
 		// Open virtIo pipeline
 		while( 1 )
     	{
@@ -69,6 +69,7 @@ public:
     
    	 // Get virtIO file descriptor
     	fd = fileno(m_pFILE);
+    	simple_malloc=0;
 	}
 	
 	~VirtioSem()

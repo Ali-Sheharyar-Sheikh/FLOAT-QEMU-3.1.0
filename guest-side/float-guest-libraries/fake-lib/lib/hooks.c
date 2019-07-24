@@ -14,6 +14,7 @@ sem_t *sem;
 sem_t *sem1;
 sem_t *sem_shared_access;
 int fd_fifo;
+int simple_malloc=0;
 
 ///*
 void* malloc (size_t size)
@@ -22,7 +23,7 @@ void* malloc (size_t size)
  	//fflush(stdout);
  	counter++;
 	
- 	if (counter>10)
+ 	if (counter>10 && (simple_malloc != 1))
  	{
  		sem_wait(sem_shared_access);	
  		input in;
