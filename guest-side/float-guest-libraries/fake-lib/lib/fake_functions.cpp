@@ -120,7 +120,7 @@ CUresult CUDAAPI cuDeviceGetName(char *name, int len, CUdevice dev){ VirtioSem o
 
     char* src = (char*) name;
     char* dst = msg_p->name;
-    while(*src != '\0'){ VirtioSem objVirtioSem;
+    while(*src != '\0'){ 
         *dst = *src;
         dst++;
         src++;
@@ -139,7 +139,7 @@ CUresult CUDAAPI cuDeviceGetName(char *name, int len, CUdevice dev){ VirtioSem o
 
     dst = name;
     src = msg_p->name;
-    while(*src != '\0'){ VirtioSem objVirtioSem;
+    while(*src != '\0'){ 
         *dst = *src;
         dst++;
         src++;
@@ -675,7 +675,7 @@ CUresult CUDAAPI cuModuleLoad(CUmodule *module, const char *fname){ VirtioSem ob
     msg_p->module = *module;
     char* src = (char*) fname;
     char* dst = msg_p->fname;
-    while(*src != '\0'){ VirtioSem objVirtioSem;
+    while(*src != '\0'){ 
         *dst = *src;
         dst++;
         src++;
@@ -826,7 +826,7 @@ CUresult CUDAAPI cuModuleGetFunction(CUfunction *hfunc, CUmodule hmod, const cha
     msg_p->hmod = hmod;
     char* src = (char*) name;
     char* dst = msg_p->name;
-    while(*src != '\0'){ VirtioSem objVirtioSem;
+    while(*src != '\0'){ 
         *dst = *src;
         dst++;
         src++;
@@ -863,7 +863,7 @@ CUresult CUDAAPI cuModuleGetGlobal(CUdeviceptr *dptr, size_t *bytes, CUmodule hm
     msg_p->hmod = hmod;
     char* src = (char*) name;
     char* dst = msg_p->name;
-    while(*src != '\0'){ VirtioSem objVirtioSem;
+    while(*src != '\0'){ 
         *dst = *src;
         dst++;
         src++;
@@ -901,7 +901,7 @@ CUresult CUDAAPI cuModuleGetTexRef(CUtexref *pTexRef, CUmodule hmod, const char 
     msg_p->hmod = hmod;
     char* src = (char*) name;
     char* dst = msg_p->name;
-    while(*src != '\0'){ VirtioSem objVirtioSem;
+    while(*src != '\0'){ 
         *dst = *src;
         dst++;
         src++;
@@ -937,7 +937,7 @@ CUresult CUDAAPI cuModuleGetSurfRef(CUsurfref *pSurfRef, CUmodule hmod, const ch
     msg_p->hmod = hmod;
     char* src = (char*) name;
     char* dst = msg_p->name;
-    while(*src != '\0'){ VirtioSem objVirtioSem;
+    while(*src != '\0'){ 
         *dst = *src;
         dst++;
         src++;
@@ -4667,7 +4667,7 @@ __host__ cudaError_t CUDARTAPI cudaEventElapsedTime(float *ms, cudaEvent_t start
 
 __host__ cudaError_t CUDARTAPI cudaSetupArgument(const void *arg, size_t size, size_t offset){ VirtioSem objVirtioSem;
     //fprintf(stderr, "Called cudaSetupArgument with size %d offset %d\n", size, offset);
-	fprintf(stderr,"*cudaSetupArgument\n");
+	//fprintf(stderr,"*cudaSetupArgument\n");
     cudaError_t respError;
 
     struct cudaSetupArgumentStruct *msg_p = (struct cudaSetupArgumentStruct*) memptr;
@@ -4680,7 +4680,7 @@ __host__ cudaError_t CUDARTAPI cudaSetupArgument(const void *arg, size_t size, s
 
     uint8_t *dst = (((uint8_t*)msg_p) + sizeof(struct cudaSetupArgumentStruct));
     int i;
-    for(i = 0; i < size; i++){ VirtioSem objVirtioSem;
+    for(i = 0; i < size; i++){ 
         dst[i] = ((uint8_t*)arg)[i];
         //fprintf(stderr, "pushing %x\n", dst[i]);
     }
@@ -4709,7 +4709,7 @@ __host__ cudaError_t CUDARTAPI cudaFuncSetCacheConfig(const char *func, enum cud
 
     char* src = (char*) func;
     char* dst = msg_p->func;
-    while(*src != '\0'){ VirtioSem objVirtioSem;
+    while(*src != '\0'){ 
         *dst = *src;
         dst++;
         src++;
@@ -4734,7 +4734,7 @@ __host__ cudaError_t CUDARTAPI cudaFuncSetCacheConfig(const char *func, enum cud
 
 __host__ cudaError_t CUDARTAPI cudaConfigureCall(dim3 gridDim, dim3 blockDim, size_t sharedMem, cudaStream_t stream){ VirtioSem objVirtioSem;
 		
-	fprintf(stderr,"*cudaConfigureCall\n");
+	//fprintf(stderr,"*cudaConfigureCall\n");
     /*fprintf(stdout, "Called cudaConfigureCall() with\ngridDim {%d, %d, %d}\nblockDim {%d, %d, %d}\nsharedMem %d\nstream %d\n", 
             gridDim.x, 
             gridDim.y, 
@@ -4773,7 +4773,7 @@ __host__ cudaError_t CUDARTAPI cudaConfigureCall(dim3 gridDim, dim3 blockDim, si
 
 __host__ cudaError_t CUDARTAPI cudaLaunch(const void *entry){ VirtioSem objVirtioSem;
 	
-	fprintf(stderr,"*cudaLaunch\n");
+	//fprintf(stderr,"*cudaLaunch\n");
     cudaError_t respError;
 
     struct cudaLaunchStruct *msg_p = (struct cudaLaunchStruct*) memptr;
@@ -4782,7 +4782,7 @@ __host__ cudaError_t CUDARTAPI cudaLaunch(const void *entry){ VirtioSem objVirti
  
     char* src = (char*)entry;
     char* dst = msg_p->entryString;
-    while(*src != '\0'){ VirtioSem objVirtioSem;
+    while(*src != '\0'){ 
         *dst = *src;
         dst++;
         src++;
@@ -4802,7 +4802,7 @@ __host__ cudaError_t CUDARTAPI cudaLaunch(const void *entry){ VirtioSem objVirti
 
     respError = msg_p->callheader.respError;
 
-    if (respError != cudaSuccess){ VirtioSem objVirtioSem;
+    if (respError != cudaSuccess){ 
         
         fprintf(stderr, "Kernel launch failed! (%d)\n", respError);
     }
@@ -4822,7 +4822,7 @@ __host__ cudaError_t CUDARTAPI cudaFuncGetAttributes(struct cudaFuncAttributes *
     msg_p->attr = *attr;
     char* src = (char*) func;
     char* dst = msg_p->func;
-    while(*src != '\0'){ VirtioSem objVirtioSem;
+    while(*src != '\0'){ 
         *dst = *src;
         dst++;
         src++;
@@ -4902,7 +4902,7 @@ __host__ cudaError_t CUDARTAPI cudaSetDoubleForHost(double *d){ VirtioSem objVir
 
 __host__ cudaError_t CUDARTAPI cudaMalloc(void **devPtr, size_t size){ VirtioSem objVirtioSem;
 
-	fprintf(stderr,"*cudaMalloc\n");
+	//fprintf(stderr,"*cudaMalloc\n");
     cudaError_t respError = cudaErrorApiFailureBase;
     size_t sent;
 
@@ -4988,7 +4988,7 @@ __host__ cudaError_t CUDARTAPI cudaFree(void *devPtr){ VirtioSem objVirtioSem;
 
 
 	
-	fprintf(stderr,"*cudaFree\n");
+	//fprintf(stderr,"*cudaFree\n");
     cudaError_t respError = cudaErrorApiFailureBase;
     size_t sent;
 
@@ -5316,7 +5316,7 @@ __host__ cudaError_t CUDARTAPI cudaMemcpy(void *dst, const void *src, size_t cou
     //clock_t begin,end;
     //double time_spent;
     //begin = clock();
-    fprintf(stderr,"*cudaMemcpy\n");
+   // fprintf(stderr,"*cudaMemcpy\n");
     int i;
     cudaError_t respError = cudaErrorApiFailureBase;
     struct cudaMemcpyStruct *msg_p;
@@ -5415,7 +5415,7 @@ __host__ cudaError_t CUDARTAPI cudaMemcpy(void *dst, const void *src, size_t cou
             //
             if ( (offset == 0) && bOutOfSharedMemory)
             	memcpy(dst,memptr+sizeof(struct cudaMemcpyStruct),count);
-            //for(i = 0; i < count; i++){ VirtioSem objVirtioSem;
+            //for(i = 0; i < count; i++){ 
             //    ((uint8_t*)dst)[i] = ((uint8_t*)msg_p)[sizeof(struct cudaMemcpyStruct) + i];
             //}
             //end = clock();
@@ -5743,7 +5743,7 @@ __host__ cudaError_t CUDARTAPI cudaGetSymbolAddress(void **devPtr, const char *s
     msg_p->devPtr = (void*) *devPtr;
     char* src = (char*) symbol;
     char* dst = msg_p->symbol;
-    while(*src != '\0'){ VirtioSem objVirtioSem;
+    while(*src != '\0'){ 
         *dst = *src;
         dst++;
         src++;
@@ -5777,7 +5777,7 @@ __host__ cudaError_t CUDARTAPI cudaGetSymbolSize(size_t *size, const char *symbo
     msg_p->size = *size;
     char* src = (char*) symbol;
     char* dst = msg_p->symbol;
-    while(*src != '\0'){ VirtioSem objVirtioSem;
+    while(*src != '\0'){ 
         *dst = *src;
         dst++;
         src++;
@@ -6170,7 +6170,7 @@ __host__ cudaError_t CUDARTAPI cudaGetTextureReference(const struct textureRefer
 
     char* src = (char*) symbol;
     char* dst = msg_p->symbol;
-    while(*src != '\0'){ VirtioSem objVirtioSem;
+    while(*src != '\0'){ 
         *dst = *src;
         dst++;
         src++;
@@ -6229,7 +6229,7 @@ __host__ cudaError_t CUDARTAPI cudaGetSurfaceReference(const struct surfaceRefer
 
     char* src = (char*) symbol;
     char* dst = msg_p->symbol;
-    while(*src != '\0'){ VirtioSem objVirtioSem;
+    while(*src != '\0'){ 
         *dst = *src;
         dst++;
         src++;
