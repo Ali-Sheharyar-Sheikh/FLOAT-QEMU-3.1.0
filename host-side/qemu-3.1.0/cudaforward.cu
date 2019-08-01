@@ -151,7 +151,7 @@ static void rmFatBinary(pid_t guest_pid){
     
     if(search == NULL)
         return;
-    search->previous = search->next;
+    search->previous->next = search->next;
     search->next->previous = search->previous;
     free(search->fatBinData.fatBin);
     free(search);
