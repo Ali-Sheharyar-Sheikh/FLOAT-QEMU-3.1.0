@@ -12,7 +12,9 @@ uint offset;
 void *memptr; //base pointer of the shared memory
 sem_t *sem;
 sem_t *sem1;
+sem_t *sem_shared_access;
 int fd_fifo;
+int simple_malloc=0;
 
 ///*
 void* malloc (size_t size)
@@ -21,7 +23,9 @@ void* malloc (size_t size)
  	//fflush(stdout);
  	counter++;
 	
- 	if (counter>7){
+ 	if (counter>10 && (simple_malloc != 1))
+ 	{
+ 		sem_wait(sem_shared_access);	
  		input in;
  		in.func = MALLOC;
  		in.size = size;
@@ -32,6 +36,7 @@ void* malloc (size_t size)
  		offset = in.offset;
 		void* return_ptr = memptr + (1024*1024) + in.offset;
 		fprintf(stderr, "SHARED Malloc Size: %d, PTR: %p, offset: %d\n", in.size, return_ptr, in.offset );
+		sem_post(sem_shared_access);
  		return return_ptr;
  	}
  	void *return_cuda = __libc_malloc(size);
@@ -56,6 +61,7 @@ void *realloc(void* ptr, size_t size){
  	//counter--;
  	if ( (ptr < memend) && (ptr > memptr) )
 	{
+		sem_wait(sem_shared_access);
  		//printf("sending data to malloc\n");
  		input in;
  		in.func = FREE;
@@ -66,9 +72,10 @@ void *realloc(void* ptr, size_t size){
 		sem_wait(sem1);
      	read(fd_fifo, &in, 12);
 		fprintf(stderr,"SHARED Free PTR: %p, offset: %d\n",ptr, free_offset);
+		sem_post(sem_shared_access);
  	}
  	else
 	__libc_free(ptr);
 	//fprintf(stderr,"free(%p)\n",ptr);
  }
- //*/
+//*/

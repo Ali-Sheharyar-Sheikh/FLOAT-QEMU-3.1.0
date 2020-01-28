@@ -34,6 +34,59 @@
 #include "transfer.h"
 //}
 
+class VirtioSem
+{	
+	FILE* m_pFILE = NULL;
+public:
+	
+	VirtioSem()
+	{
+		sem_wait(sem_virtio);
+		fprintf(stderr,"MUTEX acquired\n");
+		simple_malloc = 1;
+		// Open virtIo pipeline
+		while( 1 )
+    	{
+    		try
+    		{
+    			if( access( "/dev/vport0p1", F_OK ) != -1 )
+    			{
+    				m_pFILE = fopen("/dev/vport0p1", "w+");
+    				if(m_pFILE == NULL)
+    					fprintf(stderr, "ERROR: Failed opening the device node.\n");
+    				else
+    					break;	
+    			}
+    			else
+    			fprintf(stderr, "ERROR: /dev/vport0p1 file doesn't exists.\n");
+    		}
+    		catch(...)
+    		{
+		        fprintf(stderr, "ERROR: Failed opening the device node.\n");
+		    }
+	    }
+	    fprintf(stderr,"OPEN success the device node.\n");
+    
+   	 // Get virtIO file descriptor
+    	fd = fileno(m_pFILE);
+    	simple_malloc=0;
+	}
+	
+	~VirtioSem()
+	{
+		while(fclose(m_pFILE) != 0)
+		{
+			fprintf(stderr,"ERROR: Failed closing the device node.\n");
+		}
+		fprintf(stderr,"CLOSE success the device node.\n");
+		close(fd);
+		sem_post(sem_virtio);
+		fprintf(stderr, "MUTEX released\n");
+	}
+	
+
+};
+
 typedef enum faCudaError{
     faCuda_success  =   0,
     faCuda_error    =   1
@@ -78,8 +131,10 @@ extern "C"{
  * used for now.
  * */
 
-void** __cudaRegisterFatBinary(void* fatCubin){
-
+void** __cudaRegisterFatBinary(void* fatCubin)
+{	
+    VirtioSem objVirtioSem;
+	fprintf(stderr,"**__cudaRegisterFatBinary\n");
  //   init();
     
     //cudaDeviceReset();
@@ -111,12 +166,17 @@ void** __cudaRegisterFatBinary(void* fatCubin){
     if(recvMessage((void**)&msg) == FACUDA_ERROR)
         fprintf(stderr, "Unhandled error in __cudaRegisterFatBinary!\n");
 
-
+	
+	
     return (void**) 0x00;
 
 }
 
-void __cudaUnregisterFatBinary(void **fatCubinHandle){
+void __cudaUnregisterFatBinary(void **fatCubinHandle)
+{
+	VirtioSem objVirtioSem;
+	
+	fprintf(stderr,"**__cudaUnregisterFatBinary\n");
     
     struct cudaUnRegisterFatBinaryStruct *var = 
         (struct cudaUnRegisterFatBinaryStruct*) memptr;
@@ -160,8 +220,12 @@ void __cudaRegisterFunction(
         uint3 *bid, 
         dim3 *bDim,
         dim3 *gDim,
-        int *wSize){
-
+        int *wSize)
+        {
+        	
+        	VirtioSem objVirtioSem;
+    
+	fprintf(stderr,"**__cudaRegisterFunction\n");
     struct cudaRegisterFunctionStruct *var = 
         (struct cudaRegisterFunctionStruct*) memptr;
 
@@ -195,6 +259,7 @@ void __cudaRegisterFunction(
     if(recvMessage((void**)&var) == FACUDA_ERROR)
         fprintf(stderr, "Unhandled error in __cudaRegisterFunction!\n");
 
+	
     //free((void*) var);
 
 

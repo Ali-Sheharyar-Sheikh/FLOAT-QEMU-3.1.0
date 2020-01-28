@@ -13,66 +13,81 @@
 #include <pthread.h>
 #include <time.h>
 
-
-static FILE *device_node;
-int fd;			//Device file descriptor
-int fd_shared;	//pci device file descriptor
-int fd_fifo;	//file descriptor for the fifo
-void *memptr;	//base pointer of the shared memory
-void *memend;
-uint offset;
-char *myfifo = "/tmp/myfifo";
-sem_t *sem;
-sem_t *sem1;
-
-void testFunction(){
-    printf("testFunction: Hello world!\n");
-}
+// GLOBALS
+FILE *device_node; // Device virtIO file
+int fd;			// Device virtIO file descriptor
+int fd_shared;	// pci device file descriptor
+int fd_fifo;	// file descriptor for the fifo
+void *memptr;	// base pointer of the shared memory
+void *memend; 	// pointer (end) limit of the shared memory region
+uint offset;	
+char *myfifo = "/tmp/myfifo"; // Pipeline for communicating with shared memory allocator (executable)
+sem_t *sem;		// Semaphore 1 for shared memory calls synchronization
+sem_t *sem1;	// Semaphore 2 for shared memory calls synchronization
+sem_t *sem_virtio;
+sem_t *sem_shared_access;
 
 
-//void init(void) __attribute__((constructor));
-void __attribute__((constructor)) init(void){
+// Library constructor
+// Called on library load or application startup
+void __attribute__((constructor)) init(void)
+{
+/*
+	// Open virtIo pipeline
 	device_node = fopen(CHAR_DEV, "r+");
-    if(device_node == NULL){
+    if(device_node == NULL)
+    {
         fprintf(stderr, "Failed opening the device node.\n");
         exit(EXIT_FAILURE);
     }
+    
+    // Get virtIO file descriptor
     fd = fileno(device_node);
+  
+  */
+    // Open and get file descriptor of the shared memory
     fd_shared=open(SHARED_DEV, O_RDWR);
     if ((memptr = mmap(NULL, SIZE*1024*1024, PROT_READ|PROT_WRITE, MAP_SHARED, fd_shared, 1 * getpagesize())) == (caddr_t)-1){
         close (fd_shared);
         exit (-1);
     }
+    
     memend = (uint8_t*)memptr+(SIZE*1024*1024);
     fprintf(stderr, "SHM START: %p\nSHM END: %p\n",memptr,memend);
     sem = sem_open(SEM, O_CREAT, 777, 0);
     sem1 = sem_open("/sem3", O_CREAT, 777, 0);
-    //printf("error : %s\n", strerror(errno));fflush(stdout);
+    sem_virtio = sem_open("/sem4", O_CREAT, 777, 1);
+    sem_shared_access = sem_open("/sem5", O_CREAT, 777, 1);
    	fd_fifo = open(myfifo, O_RDWR);
-
-   	//printf("error : %s\n", strerror(errno));fflush(stdout);
 }
 
-//void deinit(void) __attribute__((destructor));
-void __attribute((destructor)) deinit(void){
-	close(fd);
+// Library Destructor
+// Called on library unload or application exit
+void __attribute((destructor)) deinit(void)
+{
+	//close(fd);
 	munmap(memptr, SIZE*1024*1024);
     close(fd_shared);
     close(fd_fifo);
 	sem_close(sem);
     sem_close(sem1);
+    sem_close(sem_virtio);
+    sem_close(sem_shared_access);
 }
 
-int sendMessage(void *msg_buf, size_t len){
+// Write in device virtIO
+int sendMessage(void *msg_buf, size_t len)
+{
+	fprintf(stderr, "-SEND MESSAGE\n");
     uint32_t msg_sz = (uint32_t) offset;
-    //printf("check : %d\n", len);
-    //printf("check1 : %d\n", offset);
-    //if (memptr!=msg_buf) memcpy(memptr,msg_buf,len);
     if(write(fd, &msg_sz, 4) < 4) return FACUDA_ERROR;
     return msg_sz;
 }
 
-size_t recvMessage(void **msg_buf){
+// Read from device virtIO
+size_t recvMessage(void **msg_buf)
+{
+	fprintf(stderr, "-RECV MESSAGE\n");
 	uint32_t msg_sz=0;
 
     if(read(fd, &msg_sz, 4) < 4){
@@ -82,4 +97,5 @@ size_t recvMessage(void **msg_buf){
     *msg_buf = memptr;
     return (size_t)msg_sz;
 }
+
 #endif

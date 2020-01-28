@@ -2,7 +2,7 @@
 /* Fake functions from header faCuda_api.cpp (included from )*/
 /* Fake functions from header faCuda_api.cpp (included from )*/
 /* Fake functions from header fakeDriverApi.c (included from /faCuda_api.cpp)*/
-CUresult CUDAAPI cuInit(unsigned int Flags){
+CUresult CUDAAPI cuInit(unsigned int Flags){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -28,7 +28,7 @@ CUresult CUDAAPI cuInit(unsigned int Flags){
     return respError;
 }
 
-CUresult CUDAAPI cuDriverGetVersion(int *driverVersion){
+CUresult CUDAAPI cuDriverGetVersion(int *driverVersion){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -55,7 +55,7 @@ CUresult CUDAAPI cuDriverGetVersion(int *driverVersion){
     return respError;
 }
 
-CUresult CUDAAPI cuDeviceGet(CUdevice *device, int ordinal){
+CUresult CUDAAPI cuDeviceGet(CUdevice *device, int ordinal){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -83,7 +83,7 @@ CUresult CUDAAPI cuDeviceGet(CUdevice *device, int ordinal){
     return respError;
 }
 
-CUresult CUDAAPI cuDeviceGetCount(int *count){
+CUresult CUDAAPI cuDeviceGetCount(int *count){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -110,7 +110,7 @@ CUresult CUDAAPI cuDeviceGetCount(int *count){
     return respError;
 }
 
-CUresult CUDAAPI cuDeviceGetName(char *name, int len, CUdevice dev){
+CUresult CUDAAPI cuDeviceGetName(char *name, int len, CUdevice dev){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -120,7 +120,7 @@ CUresult CUDAAPI cuDeviceGetName(char *name, int len, CUdevice dev){
 
     char* src = (char*) name;
     char* dst = msg_p->name;
-    while(*src != '\0'){
+    while(*src != '\0'){ 
         *dst = *src;
         dst++;
         src++;
@@ -139,7 +139,7 @@ CUresult CUDAAPI cuDeviceGetName(char *name, int len, CUdevice dev){
 
     dst = name;
     src = msg_p->name;
-    while(*src != '\0'){
+    while(*src != '\0'){ 
         *dst = *src;
         dst++;
         src++;
@@ -152,7 +152,7 @@ CUresult CUDAAPI cuDeviceGetName(char *name, int len, CUdevice dev){
     return respError;
 }
 
-CUresult CUDAAPI cuDeviceComputeCapability(int *major, int *minor, CUdevice dev){
+CUresult CUDAAPI cuDeviceComputeCapability(int *major, int *minor, CUdevice dev){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -183,7 +183,7 @@ CUresult CUDAAPI cuDeviceComputeCapability(int *major, int *minor, CUdevice dev)
     return respError;
 }
 
-CUresult CUDAAPI cuDeviceTotalMem(size_t *bytes, CUdevice dev){
+CUresult CUDAAPI cuDeviceTotalMem(size_t *bytes, CUdevice dev){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -211,7 +211,7 @@ CUresult CUDAAPI cuDeviceTotalMem(size_t *bytes, CUdevice dev){
     return respError;
 }
 
-CUresult CUDAAPI cuDeviceGetProperties(CUdevprop *prop, CUdevice dev){
+CUresult CUDAAPI cuDeviceGetProperties(CUdevprop *prop, CUdevice dev){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -239,7 +239,7 @@ CUresult CUDAAPI cuDeviceGetProperties(CUdevprop *prop, CUdevice dev){
     return respError;
 }
 
-CUresult CUDAAPI cuDeviceGetAttribute(int *pi, CUdevice_attribute attrib, CUdevice dev){
+CUresult CUDAAPI cuDeviceGetAttribute(int *pi, CUdevice_attribute attrib, CUdevice dev){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -268,7 +268,7 @@ CUresult CUDAAPI cuDeviceGetAttribute(int *pi, CUdevice_attribute attrib, CUdevi
     return respError;
 }
 
-CUresult CUDAAPI cuCtxCreate(CUcontext *pctx, unsigned int flags, CUdevice dev){
+CUresult CUDAAPI cuCtxCreate(CUcontext *pctx, unsigned int flags, CUdevice dev){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -297,7 +297,7 @@ CUresult CUDAAPI cuCtxCreate(CUcontext *pctx, unsigned int flags, CUdevice dev){
     return respError;
 }
 
-CUresult CUDAAPI cuCtxDestroy(CUcontext ctx){
+CUresult CUDAAPI cuCtxDestroy(CUcontext ctx){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -322,7 +322,7 @@ CUresult CUDAAPI cuCtxDestroy(CUcontext ctx){
     return respError;
 }
 
-CUresult CUDAAPI cuCtxAttach(CUcontext *pctx, unsigned int flags){
+CUresult CUDAAPI cuCtxAttach(CUcontext *pctx, unsigned int flags){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -350,7 +350,7 @@ CUresult CUDAAPI cuCtxAttach(CUcontext *pctx, unsigned int flags){
     return respError;
 }
 
-CUresult CUDAAPI cuCtxDetach(CUcontext ctx){
+CUresult CUDAAPI cuCtxDetach(CUcontext ctx){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -375,7 +375,7 @@ CUresult CUDAAPI cuCtxDetach(CUcontext ctx){
     return respError;
 }
 
-CUresult CUDAAPI cuCtxPushCurrent(CUcontext ctx){
+CUresult CUDAAPI cuCtxPushCurrent(CUcontext ctx){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -400,7 +400,7 @@ CUresult CUDAAPI cuCtxPushCurrent(CUcontext ctx){
     return respError;
 }
 
-CUresult CUDAAPI cuCtxPopCurrent(CUcontext *pctx){
+CUresult CUDAAPI cuCtxPopCurrent(CUcontext *pctx){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -427,7 +427,7 @@ CUresult CUDAAPI cuCtxPopCurrent(CUcontext *pctx){
     return respError;
 }
 
-CUresult CUDAAPI cuCtxSetCurrent(CUcontext ctx){
+CUresult CUDAAPI cuCtxSetCurrent(CUcontext ctx){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -452,7 +452,7 @@ CUresult CUDAAPI cuCtxSetCurrent(CUcontext ctx){
     return respError;
 }
 
-CUresult CUDAAPI cuCtxGetCurrent(CUcontext *pctx){
+CUresult CUDAAPI cuCtxGetCurrent(CUcontext *pctx){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -479,7 +479,7 @@ CUresult CUDAAPI cuCtxGetCurrent(CUcontext *pctx){
     return respError;
 }
 
-CUresult CUDAAPI cuCtxGetDevice(CUdevice *device){
+CUresult CUDAAPI cuCtxGetDevice(CUdevice *device){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -506,7 +506,7 @@ CUresult CUDAAPI cuCtxGetDevice(CUdevice *device){
     return respError;
 }
 
-CUresult CUDAAPI cuCtxSynchronize(void){
+CUresult CUDAAPI cuCtxSynchronize(void){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -530,7 +530,7 @@ CUresult CUDAAPI cuCtxSynchronize(void){
     return respError;
 }
 
-CUresult CUDAAPI cuCtxSetLimit(CUlimit limit, size_t value){
+CUresult CUDAAPI cuCtxSetLimit(CUlimit limit, size_t value){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -556,7 +556,7 @@ CUresult CUDAAPI cuCtxSetLimit(CUlimit limit, size_t value){
     return respError;
 }
 
-CUresult CUDAAPI cuCtxGetLimit(size_t *pvalue, CUlimit limit){
+CUresult CUDAAPI cuCtxGetLimit(size_t *pvalue, CUlimit limit){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -584,7 +584,7 @@ CUresult CUDAAPI cuCtxGetLimit(size_t *pvalue, CUlimit limit){
     return respError;
 }
 
-CUresult CUDAAPI cuCtxGetCacheConfig(CUfunc_cache *pconfig){
+CUresult CUDAAPI cuCtxGetCacheConfig(CUfunc_cache *pconfig){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -611,7 +611,7 @@ CUresult CUDAAPI cuCtxGetCacheConfig(CUfunc_cache *pconfig){
     return respError;
 }
 
-CUresult CUDAAPI cuCtxSetCacheConfig(CUfunc_cache config){
+CUresult CUDAAPI cuCtxSetCacheConfig(CUfunc_cache config){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -636,7 +636,7 @@ CUresult CUDAAPI cuCtxSetCacheConfig(CUfunc_cache config){
     return respError;
 }
 
-CUresult CUDAAPI cuCtxGetApiVersion(CUcontext ctx, unsigned int *version){
+CUresult CUDAAPI cuCtxGetApiVersion(CUcontext ctx, unsigned int *version){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -664,7 +664,7 @@ CUresult CUDAAPI cuCtxGetApiVersion(CUcontext ctx, unsigned int *version){
     return respError;
 }
 
-CUresult CUDAAPI cuModuleLoad(CUmodule *module, const char *fname){
+CUresult CUDAAPI cuModuleLoad(CUmodule *module, const char *fname){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -675,7 +675,7 @@ CUresult CUDAAPI cuModuleLoad(CUmodule *module, const char *fname){
     msg_p->module = *module;
     char* src = (char*) fname;
     char* dst = msg_p->fname;
-    while(*src != '\0'){
+    while(*src != '\0'){ 
         *dst = *src;
         dst++;
         src++;
@@ -699,7 +699,7 @@ CUresult CUDAAPI cuModuleLoad(CUmodule *module, const char *fname){
     return respError;
 }
 
-CUresult CUDAAPI cuModuleLoadData(CUmodule *module, const void *image){
+CUresult CUDAAPI cuModuleLoadData(CUmodule *module, const void *image){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -727,7 +727,7 @@ CUresult CUDAAPI cuModuleLoadData(CUmodule *module, const void *image){
     return respError;
 }
 
-CUresult CUDAAPI cuModuleLoadDataEx(CUmodule *module, const void *image, unsigned int numOptions, CUjit_option *options, void **optionValues){
+CUresult CUDAAPI cuModuleLoadDataEx(CUmodule *module, const void *image, unsigned int numOptions, CUjit_option *options, void **optionValues){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -761,7 +761,7 @@ CUresult CUDAAPI cuModuleLoadDataEx(CUmodule *module, const void *image, unsigne
     return respError;
 }
 
-CUresult CUDAAPI cuModuleLoadFatBinary(CUmodule *module, const void *fatCubin){
+CUresult CUDAAPI cuModuleLoadFatBinary(CUmodule *module, const void *fatCubin){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -789,7 +789,7 @@ CUresult CUDAAPI cuModuleLoadFatBinary(CUmodule *module, const void *fatCubin){
     return respError;
 }
 
-CUresult CUDAAPI cuModuleUnload(CUmodule hmod){
+CUresult CUDAAPI cuModuleUnload(CUmodule hmod){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -814,7 +814,7 @@ CUresult CUDAAPI cuModuleUnload(CUmodule hmod){
     return respError;
 }
 
-CUresult CUDAAPI cuModuleGetFunction(CUfunction *hfunc, CUmodule hmod, const char *name){
+CUresult CUDAAPI cuModuleGetFunction(CUfunction *hfunc, CUmodule hmod, const char *name){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -826,7 +826,7 @@ CUresult CUDAAPI cuModuleGetFunction(CUfunction *hfunc, CUmodule hmod, const cha
     msg_p->hmod = hmod;
     char* src = (char*) name;
     char* dst = msg_p->name;
-    while(*src != '\0'){
+    while(*src != '\0'){ 
         *dst = *src;
         dst++;
         src++;
@@ -850,7 +850,7 @@ CUresult CUDAAPI cuModuleGetFunction(CUfunction *hfunc, CUmodule hmod, const cha
     return respError;
 }
 
-CUresult CUDAAPI cuModuleGetGlobal(CUdeviceptr *dptr, size_t *bytes, CUmodule hmod, const char *name){
+CUresult CUDAAPI cuModuleGetGlobal(CUdeviceptr *dptr, size_t *bytes, CUmodule hmod, const char *name){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -863,7 +863,7 @@ CUresult CUDAAPI cuModuleGetGlobal(CUdeviceptr *dptr, size_t *bytes, CUmodule hm
     msg_p->hmod = hmod;
     char* src = (char*) name;
     char* dst = msg_p->name;
-    while(*src != '\0'){
+    while(*src != '\0'){ 
         *dst = *src;
         dst++;
         src++;
@@ -889,7 +889,7 @@ CUresult CUDAAPI cuModuleGetGlobal(CUdeviceptr *dptr, size_t *bytes, CUmodule hm
     return respError;
 }
 
-CUresult CUDAAPI cuModuleGetTexRef(CUtexref *pTexRef, CUmodule hmod, const char *name){
+CUresult CUDAAPI cuModuleGetTexRef(CUtexref *pTexRef, CUmodule hmod, const char *name){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -901,7 +901,7 @@ CUresult CUDAAPI cuModuleGetTexRef(CUtexref *pTexRef, CUmodule hmod, const char 
     msg_p->hmod = hmod;
     char* src = (char*) name;
     char* dst = msg_p->name;
-    while(*src != '\0'){
+    while(*src != '\0'){ 
         *dst = *src;
         dst++;
         src++;
@@ -925,7 +925,7 @@ CUresult CUDAAPI cuModuleGetTexRef(CUtexref *pTexRef, CUmodule hmod, const char 
     return respError;
 }
 
-CUresult CUDAAPI cuModuleGetSurfRef(CUsurfref *pSurfRef, CUmodule hmod, const char *name){
+CUresult CUDAAPI cuModuleGetSurfRef(CUsurfref *pSurfRef, CUmodule hmod, const char *name){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -937,7 +937,7 @@ CUresult CUDAAPI cuModuleGetSurfRef(CUsurfref *pSurfRef, CUmodule hmod, const ch
     msg_p->hmod = hmod;
     char* src = (char*) name;
     char* dst = msg_p->name;
-    while(*src != '\0'){
+    while(*src != '\0'){ 
         *dst = *src;
         dst++;
         src++;
@@ -961,7 +961,7 @@ CUresult CUDAAPI cuModuleGetSurfRef(CUsurfref *pSurfRef, CUmodule hmod, const ch
     return respError;
 }
 
-CUresult CUDAAPI cuMemGetInfo(size_t *free_, size_t *total){
+CUresult CUDAAPI cuMemGetInfo(size_t *free_, size_t *total){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -991,7 +991,7 @@ CUresult CUDAAPI cuMemGetInfo(size_t *free_, size_t *total){
     return respError;
 }
 
-CUresult CUDAAPI cuMemAlloc(CUdeviceptr *dptr, size_t bytesize){
+CUresult CUDAAPI cuMemAlloc(CUdeviceptr *dptr, size_t bytesize){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1019,7 +1019,7 @@ CUresult CUDAAPI cuMemAlloc(CUdeviceptr *dptr, size_t bytesize){
     return respError;
 }
 
-CUresult CUDAAPI cuMemAllocPitch(CUdeviceptr *dptr, size_t *pPitch, size_t WidthInBytes, size_t Height, unsigned int ElementSizeBytes){
+CUresult CUDAAPI cuMemAllocPitch(CUdeviceptr *dptr, size_t *pPitch, size_t WidthInBytes, size_t Height, unsigned int ElementSizeBytes){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1052,7 +1052,7 @@ CUresult CUDAAPI cuMemAllocPitch(CUdeviceptr *dptr, size_t *pPitch, size_t Width
     return respError;
 }
 
-CUresult CUDAAPI cuMemFree(CUdeviceptr dptr){
+CUresult CUDAAPI cuMemFree(CUdeviceptr dptr){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1077,7 +1077,7 @@ CUresult CUDAAPI cuMemFree(CUdeviceptr dptr){
     return respError;
 }
 
-CUresult CUDAAPI cuMemGetAddressRange(CUdeviceptr *pbase, size_t *psize, CUdeviceptr dptr){
+CUresult CUDAAPI cuMemGetAddressRange(CUdeviceptr *pbase, size_t *psize, CUdeviceptr dptr){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1108,7 +1108,7 @@ CUresult CUDAAPI cuMemGetAddressRange(CUdeviceptr *pbase, size_t *psize, CUdevic
     return respError;
 }
 
-CUresult CUDAAPI cuMemAllocHost(void **pp, size_t bytesize){
+CUresult CUDAAPI cuMemAllocHost(void **pp, size_t bytesize){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1135,7 +1135,7 @@ CUresult CUDAAPI cuMemAllocHost(void **pp, size_t bytesize){
     return respError;
 }
 
-CUresult CUDAAPI cuMemFreeHost(void *p){
+CUresult CUDAAPI cuMemFreeHost(void *p){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1161,7 +1161,7 @@ CUresult CUDAAPI cuMemFreeHost(void *p){
     return respError;
 }
 
-CUresult CUDAAPI cuMemHostAlloc(void **pp, size_t bytesize, unsigned int Flags){
+CUresult CUDAAPI cuMemHostAlloc(void **pp, size_t bytesize, unsigned int Flags){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1189,7 +1189,7 @@ CUresult CUDAAPI cuMemHostAlloc(void **pp, size_t bytesize, unsigned int Flags){
     return respError;
 }
 
-CUresult CUDAAPI cuMemHostGetDevicePointer(CUdeviceptr *pdptr, void *p, unsigned int Flags){
+CUresult CUDAAPI cuMemHostGetDevicePointer(CUdeviceptr *pdptr, void *p, unsigned int Flags){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1219,7 +1219,7 @@ CUresult CUDAAPI cuMemHostGetDevicePointer(CUdeviceptr *pdptr, void *p, unsigned
     return respError;
 }
 
-CUresult CUDAAPI cuMemHostGetFlags(unsigned int *pFlags, void *p){
+CUresult CUDAAPI cuMemHostGetFlags(unsigned int *pFlags, void *p){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1248,7 +1248,7 @@ CUresult CUDAAPI cuMemHostGetFlags(unsigned int *pFlags, void *p){
     return respError;
 }
 
-CUresult CUDAAPI cuMemHostRegister(void *p, size_t bytesize, unsigned int Flags){
+CUresult CUDAAPI cuMemHostRegister(void *p, size_t bytesize, unsigned int Flags){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1276,7 +1276,7 @@ CUresult CUDAAPI cuMemHostRegister(void *p, size_t bytesize, unsigned int Flags)
     return respError;
 }
 
-CUresult CUDAAPI cuMemHostUnregister(void *p){
+CUresult CUDAAPI cuMemHostUnregister(void *p){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1302,7 +1302,7 @@ CUresult CUDAAPI cuMemHostUnregister(void *p){
     return respError;
 }
 
-CUresult CUDAAPI cuMemcpy(CUdeviceptr dst, CUdeviceptr src, size_t ByteCount){
+CUresult CUDAAPI cuMemcpy(CUdeviceptr dst, CUdeviceptr src, size_t ByteCount){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1329,7 +1329,7 @@ CUresult CUDAAPI cuMemcpy(CUdeviceptr dst, CUdeviceptr src, size_t ByteCount){
     return respError;
 }
 
-CUresult CUDAAPI cuMemcpyPeer(CUdeviceptr dstDevice, CUcontext dstContext, CUdeviceptr srcDevice, CUcontext srcContext, size_t ByteCount){
+CUresult CUDAAPI cuMemcpyPeer(CUdeviceptr dstDevice, CUcontext dstContext, CUdeviceptr srcDevice, CUcontext srcContext, size_t ByteCount){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1358,7 +1358,7 @@ CUresult CUDAAPI cuMemcpyPeer(CUdeviceptr dstDevice, CUcontext dstContext, CUdev
     return respError;
 }
 
-CUresult CUDAAPI cuMemcpyHtoD(CUdeviceptr dstDevice, const void *srcHost, size_t ByteCount){
+CUresult CUDAAPI cuMemcpyHtoD(CUdeviceptr dstDevice, const void *srcHost, size_t ByteCount){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1385,7 +1385,7 @@ CUresult CUDAAPI cuMemcpyHtoD(CUdeviceptr dstDevice, const void *srcHost, size_t
     return respError;
 }
 
-CUresult CUDAAPI cuMemcpyDtoH(void *dstHost, CUdeviceptr srcDevice, size_t ByteCount){
+CUresult CUDAAPI cuMemcpyDtoH(void *dstHost, CUdeviceptr srcDevice, size_t ByteCount){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1413,7 +1413,7 @@ CUresult CUDAAPI cuMemcpyDtoH(void *dstHost, CUdeviceptr srcDevice, size_t ByteC
     return respError;
 }
 
-CUresult CUDAAPI cuMemcpyDtoD(CUdeviceptr dstDevice, CUdeviceptr srcDevice, size_t ByteCount){
+CUresult CUDAAPI cuMemcpyDtoD(CUdeviceptr dstDevice, CUdeviceptr srcDevice, size_t ByteCount){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1440,7 +1440,7 @@ CUresult CUDAAPI cuMemcpyDtoD(CUdeviceptr dstDevice, CUdeviceptr srcDevice, size
     return respError;
 }
 
-CUresult CUDAAPI cuMemcpyDtoA(CUarray dstArray, size_t dstOffset, CUdeviceptr srcDevice, size_t ByteCount){
+CUresult CUDAAPI cuMemcpyDtoA(CUarray dstArray, size_t dstOffset, CUdeviceptr srcDevice, size_t ByteCount){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1468,7 +1468,7 @@ CUresult CUDAAPI cuMemcpyDtoA(CUarray dstArray, size_t dstOffset, CUdeviceptr sr
     return respError;
 }
 
-CUresult CUDAAPI cuMemcpyAtoD(CUdeviceptr dstDevice, CUarray srcArray, size_t srcOffset, size_t ByteCount){
+CUresult CUDAAPI cuMemcpyAtoD(CUdeviceptr dstDevice, CUarray srcArray, size_t srcOffset, size_t ByteCount){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1496,7 +1496,7 @@ CUresult CUDAAPI cuMemcpyAtoD(CUdeviceptr dstDevice, CUarray srcArray, size_t sr
     return respError;
 }
 
-CUresult CUDAAPI cuMemcpyHtoA(CUarray dstArray, size_t dstOffset, const void *srcHost, size_t ByteCount){
+CUresult CUDAAPI cuMemcpyHtoA(CUarray dstArray, size_t dstOffset, const void *srcHost, size_t ByteCount){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1524,7 +1524,7 @@ CUresult CUDAAPI cuMemcpyHtoA(CUarray dstArray, size_t dstOffset, const void *sr
     return respError;
 }
 
-CUresult CUDAAPI cuMemcpyAtoH(void *dstHost, CUarray srcArray, size_t srcOffset, size_t ByteCount){
+CUresult CUDAAPI cuMemcpyAtoH(void *dstHost, CUarray srcArray, size_t srcOffset, size_t ByteCount){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1553,7 +1553,7 @@ CUresult CUDAAPI cuMemcpyAtoH(void *dstHost, CUarray srcArray, size_t srcOffset,
     return respError;
 }
 
-CUresult CUDAAPI cuMemcpyAtoA(CUarray dstArray, size_t dstOffset, CUarray srcArray, size_t srcOffset, size_t ByteCount){
+CUresult CUDAAPI cuMemcpyAtoA(CUarray dstArray, size_t dstOffset, CUarray srcArray, size_t srcOffset, size_t ByteCount){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1582,7 +1582,7 @@ CUresult CUDAAPI cuMemcpyAtoA(CUarray dstArray, size_t dstOffset, CUarray srcArr
     return respError;
 }
 
-CUresult CUDAAPI cuMemcpy2D(const CUDA_MEMCPY2D *pCopy){
+CUresult CUDAAPI cuMemcpy2D(const CUDA_MEMCPY2D *pCopy){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1607,7 +1607,7 @@ CUresult CUDAAPI cuMemcpy2D(const CUDA_MEMCPY2D *pCopy){
     return respError;
 }
 
-CUresult CUDAAPI cuMemcpy2DUnaligned(const CUDA_MEMCPY2D *pCopy){
+CUresult CUDAAPI cuMemcpy2DUnaligned(const CUDA_MEMCPY2D *pCopy){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1632,7 +1632,7 @@ CUresult CUDAAPI cuMemcpy2DUnaligned(const CUDA_MEMCPY2D *pCopy){
     return respError;
 }
 
-CUresult CUDAAPI cuMemcpy3D(const CUDA_MEMCPY3D *pCopy){
+CUresult CUDAAPI cuMemcpy3D(const CUDA_MEMCPY3D *pCopy){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1657,7 +1657,7 @@ CUresult CUDAAPI cuMemcpy3D(const CUDA_MEMCPY3D *pCopy){
     return respError;
 }
 
-CUresult CUDAAPI cuMemcpy3DPeer(const CUDA_MEMCPY3D_PEER *pCopy){
+CUresult CUDAAPI cuMemcpy3DPeer(const CUDA_MEMCPY3D_PEER *pCopy){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1682,7 +1682,7 @@ CUresult CUDAAPI cuMemcpy3DPeer(const CUDA_MEMCPY3D_PEER *pCopy){
     return respError;
 }
 
-CUresult CUDAAPI cuMemcpyAsync(CUdeviceptr dst, CUdeviceptr src, size_t ByteCount, CUstream hStream){
+CUresult CUDAAPI cuMemcpyAsync(CUdeviceptr dst, CUdeviceptr src, size_t ByteCount, CUstream hStream){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1710,7 +1710,7 @@ CUresult CUDAAPI cuMemcpyAsync(CUdeviceptr dst, CUdeviceptr src, size_t ByteCoun
     return respError;
 }
 
-CUresult CUDAAPI cuMemcpyPeerAsync(CUdeviceptr dstDevice, CUcontext dstContext, CUdeviceptr srcDevice, CUcontext srcContext, size_t ByteCount, CUstream hStream){
+CUresult CUDAAPI cuMemcpyPeerAsync(CUdeviceptr dstDevice, CUcontext dstContext, CUdeviceptr srcDevice, CUcontext srcContext, size_t ByteCount, CUstream hStream){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1740,7 +1740,7 @@ CUresult CUDAAPI cuMemcpyPeerAsync(CUdeviceptr dstDevice, CUcontext dstContext, 
     return respError;
 }
 
-CUresult CUDAAPI cuMemcpyHtoDAsync(CUdeviceptr dstDevice, const void *srcHost, size_t ByteCount, CUstream hStream){
+CUresult CUDAAPI cuMemcpyHtoDAsync(CUdeviceptr dstDevice, const void *srcHost, size_t ByteCount, CUstream hStream){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1768,7 +1768,7 @@ CUresult CUDAAPI cuMemcpyHtoDAsync(CUdeviceptr dstDevice, const void *srcHost, s
     return respError;
 }
 
-CUresult CUDAAPI cuMemcpyDtoHAsync(void *dstHost, CUdeviceptr srcDevice, size_t ByteCount, CUstream hStream){
+CUresult CUDAAPI cuMemcpyDtoHAsync(void *dstHost, CUdeviceptr srcDevice, size_t ByteCount, CUstream hStream){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1797,7 +1797,7 @@ CUresult CUDAAPI cuMemcpyDtoHAsync(void *dstHost, CUdeviceptr srcDevice, size_t 
     return respError;
 }
 
-CUresult CUDAAPI cuMemcpyDtoDAsync(CUdeviceptr dstDevice, CUdeviceptr srcDevice, size_t ByteCount, CUstream hStream){
+CUresult CUDAAPI cuMemcpyDtoDAsync(CUdeviceptr dstDevice, CUdeviceptr srcDevice, size_t ByteCount, CUstream hStream){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1825,7 +1825,7 @@ CUresult CUDAAPI cuMemcpyDtoDAsync(CUdeviceptr dstDevice, CUdeviceptr srcDevice,
     return respError;
 }
 
-CUresult CUDAAPI cuMemcpyHtoAAsync(CUarray dstArray, size_t dstOffset, const void *srcHost, size_t ByteCount, CUstream hStream){
+CUresult CUDAAPI cuMemcpyHtoAAsync(CUarray dstArray, size_t dstOffset, const void *srcHost, size_t ByteCount, CUstream hStream){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1854,7 +1854,7 @@ CUresult CUDAAPI cuMemcpyHtoAAsync(CUarray dstArray, size_t dstOffset, const voi
     return respError;
 }
 
-CUresult CUDAAPI cuMemcpyAtoHAsync(void *dstHost, CUarray srcArray, size_t srcOffset, size_t ByteCount, CUstream hStream){
+CUresult CUDAAPI cuMemcpyAtoHAsync(void *dstHost, CUarray srcArray, size_t srcOffset, size_t ByteCount, CUstream hStream){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1884,7 +1884,7 @@ CUresult CUDAAPI cuMemcpyAtoHAsync(void *dstHost, CUarray srcArray, size_t srcOf
     return respError;
 }
 
-CUresult CUDAAPI cuMemcpy2DAsync(const CUDA_MEMCPY2D *pCopy, CUstream hStream){
+CUresult CUDAAPI cuMemcpy2DAsync(const CUDA_MEMCPY2D *pCopy, CUstream hStream){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1910,7 +1910,7 @@ CUresult CUDAAPI cuMemcpy2DAsync(const CUDA_MEMCPY2D *pCopy, CUstream hStream){
     return respError;
 }
 
-CUresult CUDAAPI cuMemcpy3DAsync(const CUDA_MEMCPY3D *pCopy, CUstream hStream){
+CUresult CUDAAPI cuMemcpy3DAsync(const CUDA_MEMCPY3D *pCopy, CUstream hStream){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1936,7 +1936,7 @@ CUresult CUDAAPI cuMemcpy3DAsync(const CUDA_MEMCPY3D *pCopy, CUstream hStream){
     return respError;
 }
 
-CUresult CUDAAPI cuMemcpy3DPeerAsync(const CUDA_MEMCPY3D_PEER *pCopy, CUstream hStream){
+CUresult CUDAAPI cuMemcpy3DPeerAsync(const CUDA_MEMCPY3D_PEER *pCopy, CUstream hStream){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1962,7 +1962,7 @@ CUresult CUDAAPI cuMemcpy3DPeerAsync(const CUDA_MEMCPY3D_PEER *pCopy, CUstream h
     return respError;
 }
 
-CUresult CUDAAPI cuMemsetD8(CUdeviceptr dstDevice, unsigned char uc, size_t N){
+CUresult CUDAAPI cuMemsetD8(CUdeviceptr dstDevice, unsigned char uc, size_t N){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -1989,7 +1989,7 @@ CUresult CUDAAPI cuMemsetD8(CUdeviceptr dstDevice, unsigned char uc, size_t N){
     return respError;
 }
 
-CUresult CUDAAPI cuMemsetD16(CUdeviceptr dstDevice, unsigned short us, size_t N){
+CUresult CUDAAPI cuMemsetD16(CUdeviceptr dstDevice, unsigned short us, size_t N){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2016,7 +2016,7 @@ CUresult CUDAAPI cuMemsetD16(CUdeviceptr dstDevice, unsigned short us, size_t N)
     return respError;
 }
 
-CUresult CUDAAPI cuMemsetD32(CUdeviceptr dstDevice, unsigned int ui, size_t N){
+CUresult CUDAAPI cuMemsetD32(CUdeviceptr dstDevice, unsigned int ui, size_t N){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2043,7 +2043,7 @@ CUresult CUDAAPI cuMemsetD32(CUdeviceptr dstDevice, unsigned int ui, size_t N){
     return respError;
 }
 
-CUresult CUDAAPI cuMemsetD2D8(CUdeviceptr dstDevice, size_t dstPitch, unsigned char uc, size_t Width, size_t Height){
+CUresult CUDAAPI cuMemsetD2D8(CUdeviceptr dstDevice, size_t dstPitch, unsigned char uc, size_t Width, size_t Height){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2072,7 +2072,7 @@ CUresult CUDAAPI cuMemsetD2D8(CUdeviceptr dstDevice, size_t dstPitch, unsigned c
     return respError;
 }
 
-CUresult CUDAAPI cuMemsetD2D16(CUdeviceptr dstDevice, size_t dstPitch, unsigned short us, size_t Width, size_t Height){
+CUresult CUDAAPI cuMemsetD2D16(CUdeviceptr dstDevice, size_t dstPitch, unsigned short us, size_t Width, size_t Height){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2101,7 +2101,7 @@ CUresult CUDAAPI cuMemsetD2D16(CUdeviceptr dstDevice, size_t dstPitch, unsigned 
     return respError;
 }
 
-CUresult CUDAAPI cuMemsetD2D32(CUdeviceptr dstDevice, size_t dstPitch, unsigned int ui, size_t Width, size_t Height){
+CUresult CUDAAPI cuMemsetD2D32(CUdeviceptr dstDevice, size_t dstPitch, unsigned int ui, size_t Width, size_t Height){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2130,7 +2130,7 @@ CUresult CUDAAPI cuMemsetD2D32(CUdeviceptr dstDevice, size_t dstPitch, unsigned 
     return respError;
 }
 
-CUresult CUDAAPI cuMemsetD8Async(CUdeviceptr dstDevice, unsigned char uc, size_t N, CUstream hStream){
+CUresult CUDAAPI cuMemsetD8Async(CUdeviceptr dstDevice, unsigned char uc, size_t N, CUstream hStream){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2158,7 +2158,7 @@ CUresult CUDAAPI cuMemsetD8Async(CUdeviceptr dstDevice, unsigned char uc, size_t
     return respError;
 }
 
-CUresult CUDAAPI cuMemsetD16Async(CUdeviceptr dstDevice, unsigned short us, size_t N, CUstream hStream){
+CUresult CUDAAPI cuMemsetD16Async(CUdeviceptr dstDevice, unsigned short us, size_t N, CUstream hStream){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2186,7 +2186,7 @@ CUresult CUDAAPI cuMemsetD16Async(CUdeviceptr dstDevice, unsigned short us, size
     return respError;
 }
 
-CUresult CUDAAPI cuMemsetD32Async(CUdeviceptr dstDevice, unsigned int ui, size_t N, CUstream hStream){
+CUresult CUDAAPI cuMemsetD32Async(CUdeviceptr dstDevice, unsigned int ui, size_t N, CUstream hStream){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2214,7 +2214,7 @@ CUresult CUDAAPI cuMemsetD32Async(CUdeviceptr dstDevice, unsigned int ui, size_t
     return respError;
 }
 
-CUresult CUDAAPI cuMemsetD2D8Async(CUdeviceptr dstDevice, size_t dstPitch, unsigned char uc, size_t Width, size_t Height, CUstream hStream){
+CUresult CUDAAPI cuMemsetD2D8Async(CUdeviceptr dstDevice, size_t dstPitch, unsigned char uc, size_t Width, size_t Height, CUstream hStream){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2244,7 +2244,7 @@ CUresult CUDAAPI cuMemsetD2D8Async(CUdeviceptr dstDevice, size_t dstPitch, unsig
     return respError;
 }
 
-CUresult CUDAAPI cuMemsetD2D16Async(CUdeviceptr dstDevice, size_t dstPitch, unsigned short us, size_t Width, size_t Height, CUstream hStream){
+CUresult CUDAAPI cuMemsetD2D16Async(CUdeviceptr dstDevice, size_t dstPitch, unsigned short us, size_t Width, size_t Height, CUstream hStream){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2274,7 +2274,7 @@ CUresult CUDAAPI cuMemsetD2D16Async(CUdeviceptr dstDevice, size_t dstPitch, unsi
     return respError;
 }
 
-CUresult CUDAAPI cuMemsetD2D32Async(CUdeviceptr dstDevice, size_t dstPitch, unsigned int ui, size_t Width, size_t Height, CUstream hStream){
+CUresult CUDAAPI cuMemsetD2D32Async(CUdeviceptr dstDevice, size_t dstPitch, unsigned int ui, size_t Width, size_t Height, CUstream hStream){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2304,7 +2304,7 @@ CUresult CUDAAPI cuMemsetD2D32Async(CUdeviceptr dstDevice, size_t dstPitch, unsi
     return respError;
 }
 
-CUresult CUDAAPI cuArrayCreate(CUarray *pHandle, const CUDA_ARRAY_DESCRIPTOR *pAllocateArray){
+CUresult CUDAAPI cuArrayCreate(CUarray *pHandle, const CUDA_ARRAY_DESCRIPTOR *pAllocateArray){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2332,7 +2332,7 @@ CUresult CUDAAPI cuArrayCreate(CUarray *pHandle, const CUDA_ARRAY_DESCRIPTOR *pA
     return respError;
 }
 
-CUresult CUDAAPI cuArrayGetDescriptor(CUDA_ARRAY_DESCRIPTOR *pArrayDescriptor, CUarray hArray){
+CUresult CUDAAPI cuArrayGetDescriptor(CUDA_ARRAY_DESCRIPTOR *pArrayDescriptor, CUarray hArray){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2360,7 +2360,7 @@ CUresult CUDAAPI cuArrayGetDescriptor(CUDA_ARRAY_DESCRIPTOR *pArrayDescriptor, C
     return respError;
 }
 
-CUresult CUDAAPI cuArrayDestroy(CUarray hArray){
+CUresult CUDAAPI cuArrayDestroy(CUarray hArray){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2385,7 +2385,7 @@ CUresult CUDAAPI cuArrayDestroy(CUarray hArray){
     return respError;
 }
 
-CUresult CUDAAPI cuArray3DCreate(CUarray *pHandle, const CUDA_ARRAY3D_DESCRIPTOR *pAllocateArray){
+CUresult CUDAAPI cuArray3DCreate(CUarray *pHandle, const CUDA_ARRAY3D_DESCRIPTOR *pAllocateArray){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2413,7 +2413,7 @@ CUresult CUDAAPI cuArray3DCreate(CUarray *pHandle, const CUDA_ARRAY3D_DESCRIPTOR
     return respError;
 }
 
-CUresult CUDAAPI cuArray3DGetDescriptor(CUDA_ARRAY3D_DESCRIPTOR *pArrayDescriptor, CUarray hArray){
+CUresult CUDAAPI cuArray3DGetDescriptor(CUDA_ARRAY3D_DESCRIPTOR *pArrayDescriptor, CUarray hArray){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2441,7 +2441,7 @@ CUresult CUDAAPI cuArray3DGetDescriptor(CUDA_ARRAY3D_DESCRIPTOR *pArrayDescripto
     return respError;
 }
 
-CUresult CUDAAPI cuPointerGetAttribute(void *data, CUpointer_attribute attribute, CUdeviceptr ptr){
+CUresult CUDAAPI cuPointerGetAttribute(void *data, CUpointer_attribute attribute, CUdeviceptr ptr){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2469,7 +2469,7 @@ CUresult CUDAAPI cuPointerGetAttribute(void *data, CUpointer_attribute attribute
     return respError;
 }
 
-CUresult CUDAAPI cuStreamCreate(CUstream *phStream, unsigned int Flags){
+CUresult CUDAAPI cuStreamCreate(CUstream *phStream, unsigned int Flags){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2497,7 +2497,7 @@ CUresult CUDAAPI cuStreamCreate(CUstream *phStream, unsigned int Flags){
     return respError;
 }
 
-CUresult CUDAAPI cuStreamWaitEvent(CUstream hStream, CUevent hEvent, unsigned int Flags){
+CUresult CUDAAPI cuStreamWaitEvent(CUstream hStream, CUevent hEvent, unsigned int Flags){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2524,7 +2524,7 @@ CUresult CUDAAPI cuStreamWaitEvent(CUstream hStream, CUevent hEvent, unsigned in
     return respError;
 }
 
-CUresult CUDAAPI cuStreamQuery(CUstream hStream){
+CUresult CUDAAPI cuStreamQuery(CUstream hStream){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2549,7 +2549,7 @@ CUresult CUDAAPI cuStreamQuery(CUstream hStream){
     return respError;
 }
 
-CUresult CUDAAPI cuStreamSynchronize(CUstream hStream){
+CUresult CUDAAPI cuStreamSynchronize(CUstream hStream){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2574,7 +2574,7 @@ CUresult CUDAAPI cuStreamSynchronize(CUstream hStream){
     return respError;
 }
 
-CUresult CUDAAPI cuStreamDestroy(CUstream hStream){
+CUresult CUDAAPI cuStreamDestroy(CUstream hStream){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2599,7 +2599,7 @@ CUresult CUDAAPI cuStreamDestroy(CUstream hStream){
     return respError;
 }
 
-CUresult CUDAAPI cuEventCreate(CUevent *phEvent, unsigned int Flags){
+CUresult CUDAAPI cuEventCreate(CUevent *phEvent, unsigned int Flags){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2627,7 +2627,7 @@ CUresult CUDAAPI cuEventCreate(CUevent *phEvent, unsigned int Flags){
     return respError;
 }
 
-CUresult CUDAAPI cuEventRecord(CUevent hEvent, CUstream hStream){
+CUresult CUDAAPI cuEventRecord(CUevent hEvent, CUstream hStream){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2653,7 +2653,7 @@ CUresult CUDAAPI cuEventRecord(CUevent hEvent, CUstream hStream){
     return respError;
 }
 
-CUresult CUDAAPI cuEventQuery(CUevent hEvent){
+CUresult CUDAAPI cuEventQuery(CUevent hEvent){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2678,7 +2678,7 @@ CUresult CUDAAPI cuEventQuery(CUevent hEvent){
     return respError;
 }
 
-CUresult CUDAAPI cuEventSynchronize(CUevent hEvent){
+CUresult CUDAAPI cuEventSynchronize(CUevent hEvent){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2703,7 +2703,7 @@ CUresult CUDAAPI cuEventSynchronize(CUevent hEvent){
     return respError;
 }
 
-CUresult CUDAAPI cuEventDestroy(CUevent hEvent){
+CUresult CUDAAPI cuEventDestroy(CUevent hEvent){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2728,7 +2728,7 @@ CUresult CUDAAPI cuEventDestroy(CUevent hEvent){
     return respError;
 }
 
-CUresult CUDAAPI cuEventElapsedTime(float *pMilliseconds, CUevent hStart, CUevent hEnd){
+CUresult CUDAAPI cuEventElapsedTime(float *pMilliseconds, CUevent hStart, CUevent hEnd){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2757,7 +2757,7 @@ CUresult CUDAAPI cuEventElapsedTime(float *pMilliseconds, CUevent hStart, CUeven
     return respError;
 }
 
-CUresult CUDAAPI cuFuncGetAttribute(int *pi, CUfunction_attribute attrib, CUfunction hfunc){
+CUresult CUDAAPI cuFuncGetAttribute(int *pi, CUfunction_attribute attrib, CUfunction hfunc){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2786,7 +2786,7 @@ CUresult CUDAAPI cuFuncGetAttribute(int *pi, CUfunction_attribute attrib, CUfunc
     return respError;
 }
 
-CUresult CUDAAPI cuFuncSetCacheConfig(CUfunction hfunc, CUfunc_cache config){
+CUresult CUDAAPI cuFuncSetCacheConfig(CUfunction hfunc, CUfunc_cache config){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2812,7 +2812,7 @@ CUresult CUDAAPI cuFuncSetCacheConfig(CUfunction hfunc, CUfunc_cache config){
     return respError;
 }
 
-CUresult CUDAAPI cuFuncSetBlockShape(CUfunction hfunc, int x, int y, int z){
+CUresult CUDAAPI cuFuncSetBlockShape(CUfunction hfunc, int x, int y, int z){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2840,7 +2840,7 @@ CUresult CUDAAPI cuFuncSetBlockShape(CUfunction hfunc, int x, int y, int z){
     return respError;
 }
 
-CUresult CUDAAPI cuFuncSetSharedSize(CUfunction hfunc, unsigned int bytes){
+CUresult CUDAAPI cuFuncSetSharedSize(CUfunction hfunc, unsigned int bytes){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2866,7 +2866,7 @@ CUresult CUDAAPI cuFuncSetSharedSize(CUfunction hfunc, unsigned int bytes){
     return respError;
 }
 
-CUresult CUDAAPI cuParamSetSize(CUfunction hfunc, unsigned int numbytes){
+CUresult CUDAAPI cuParamSetSize(CUfunction hfunc, unsigned int numbytes){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2892,7 +2892,7 @@ CUresult CUDAAPI cuParamSetSize(CUfunction hfunc, unsigned int numbytes){
     return respError;
 }
 
-CUresult CUDAAPI cuParamSeti(CUfunction hfunc, int offset, unsigned int value){
+CUresult CUDAAPI cuParamSeti(CUfunction hfunc, int offset, unsigned int value){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2919,7 +2919,7 @@ CUresult CUDAAPI cuParamSeti(CUfunction hfunc, int offset, unsigned int value){
     return respError;
 }
 
-CUresult CUDAAPI cuParamSetf(CUfunction hfunc, int offset, float value){
+CUresult CUDAAPI cuParamSetf(CUfunction hfunc, int offset, float value){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2946,7 +2946,7 @@ CUresult CUDAAPI cuParamSetf(CUfunction hfunc, int offset, float value){
     return respError;
 }
 
-CUresult CUDAAPI cuParamSetv(CUfunction hfunc, int offset, void *ptr, unsigned int numbytes){
+CUresult CUDAAPI cuParamSetv(CUfunction hfunc, int offset, void *ptr, unsigned int numbytes){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -2975,7 +2975,7 @@ CUresult CUDAAPI cuParamSetv(CUfunction hfunc, int offset, void *ptr, unsigned i
     return respError;
 }
 
-CUresult CUDAAPI cuLaunch(CUfunction f){
+CUresult CUDAAPI cuLaunch(CUfunction f){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -3000,7 +3000,7 @@ CUresult CUDAAPI cuLaunch(CUfunction f){
     return respError;
 }
 
-CUresult CUDAAPI cuLaunchGrid(CUfunction f, int grid_width, int grid_height){
+CUresult CUDAAPI cuLaunchGrid(CUfunction f, int grid_width, int grid_height){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -3027,7 +3027,7 @@ CUresult CUDAAPI cuLaunchGrid(CUfunction f, int grid_width, int grid_height){
     return respError;
 }
 
-CUresult CUDAAPI cuLaunchGridAsync(CUfunction f, int grid_width, int grid_height, CUstream hStream){
+CUresult CUDAAPI cuLaunchGridAsync(CUfunction f, int grid_width, int grid_height, CUstream hStream){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -3055,7 +3055,7 @@ CUresult CUDAAPI cuLaunchGridAsync(CUfunction f, int grid_width, int grid_height
     return respError;
 }
 
-CUresult CUDAAPI cuParamSetTexRef(CUfunction hfunc, int texunit, CUtexref hTexRef){
+CUresult CUDAAPI cuParamSetTexRef(CUfunction hfunc, int texunit, CUtexref hTexRef){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -3082,7 +3082,7 @@ CUresult CUDAAPI cuParamSetTexRef(CUfunction hfunc, int texunit, CUtexref hTexRe
     return respError;
 }
 
-CUresult CUDAAPI cuTexRefSetArray(CUtexref hTexRef, CUarray hArray, unsigned int Flags){
+CUresult CUDAAPI cuTexRefSetArray(CUtexref hTexRef, CUarray hArray, unsigned int Flags){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -3109,7 +3109,7 @@ CUresult CUDAAPI cuTexRefSetArray(CUtexref hTexRef, CUarray hArray, unsigned int
     return respError;
 }
 
-CUresult CUDAAPI cuTexRefSetAddress(size_t *ByteOffset, CUtexref hTexRef, CUdeviceptr dptr, size_t bytes){
+CUresult CUDAAPI cuTexRefSetAddress(size_t *ByteOffset, CUtexref hTexRef, CUdeviceptr dptr, size_t bytes){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -3139,7 +3139,7 @@ CUresult CUDAAPI cuTexRefSetAddress(size_t *ByteOffset, CUtexref hTexRef, CUdevi
     return respError;
 }
 
-CUresult CUDAAPI cuTexRefSetAddress2D(CUtexref hTexRef, const CUDA_ARRAY_DESCRIPTOR *desc, CUdeviceptr dptr, size_t Pitch){
+CUresult CUDAAPI cuTexRefSetAddress2D(CUtexref hTexRef, const CUDA_ARRAY_DESCRIPTOR *desc, CUdeviceptr dptr, size_t Pitch){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -3167,7 +3167,7 @@ CUresult CUDAAPI cuTexRefSetAddress2D(CUtexref hTexRef, const CUDA_ARRAY_DESCRIP
     return respError;
 }
 
-CUresult CUDAAPI cuTexRefSetFormat(CUtexref hTexRef, CUarray_format fmt, int NumPackedComponents){
+CUresult CUDAAPI cuTexRefSetFormat(CUtexref hTexRef, CUarray_format fmt, int NumPackedComponents){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -3194,7 +3194,7 @@ CUresult CUDAAPI cuTexRefSetFormat(CUtexref hTexRef, CUarray_format fmt, int Num
     return respError;
 }
 
-CUresult CUDAAPI cuTexRefSetAddressMode(CUtexref hTexRef, int dim, CUaddress_mode am){
+CUresult CUDAAPI cuTexRefSetAddressMode(CUtexref hTexRef, int dim, CUaddress_mode am){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -3221,7 +3221,7 @@ CUresult CUDAAPI cuTexRefSetAddressMode(CUtexref hTexRef, int dim, CUaddress_mod
     return respError;
 }
 
-CUresult CUDAAPI cuTexRefSetFilterMode(CUtexref hTexRef, CUfilter_mode fm){
+CUresult CUDAAPI cuTexRefSetFilterMode(CUtexref hTexRef, CUfilter_mode fm){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -3247,7 +3247,7 @@ CUresult CUDAAPI cuTexRefSetFilterMode(CUtexref hTexRef, CUfilter_mode fm){
     return respError;
 }
 
-CUresult CUDAAPI cuTexRefSetFlags(CUtexref hTexRef, unsigned int Flags){
+CUresult CUDAAPI cuTexRefSetFlags(CUtexref hTexRef, unsigned int Flags){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -3273,7 +3273,7 @@ CUresult CUDAAPI cuTexRefSetFlags(CUtexref hTexRef, unsigned int Flags){
     return respError;
 }
 
-CUresult CUDAAPI cuTexRefGetAddress(CUdeviceptr *pdptr, CUtexref hTexRef){
+CUresult CUDAAPI cuTexRefGetAddress(CUdeviceptr *pdptr, CUtexref hTexRef){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -3301,7 +3301,7 @@ CUresult CUDAAPI cuTexRefGetAddress(CUdeviceptr *pdptr, CUtexref hTexRef){
     return respError;
 }
 
-CUresult CUDAAPI cuTexRefGetArray(CUarray *phArray, CUtexref hTexRef){
+CUresult CUDAAPI cuTexRefGetArray(CUarray *phArray, CUtexref hTexRef){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -3329,7 +3329,7 @@ CUresult CUDAAPI cuTexRefGetArray(CUarray *phArray, CUtexref hTexRef){
     return respError;
 }
 
-CUresult CUDAAPI cuTexRefGetAddressMode(CUaddress_mode *pam, CUtexref hTexRef, int dim){
+CUresult CUDAAPI cuTexRefGetAddressMode(CUaddress_mode *pam, CUtexref hTexRef, int dim){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -3358,7 +3358,7 @@ CUresult CUDAAPI cuTexRefGetAddressMode(CUaddress_mode *pam, CUtexref hTexRef, i
     return respError;
 }
 
-CUresult CUDAAPI cuTexRefGetFilterMode(CUfilter_mode *pfm, CUtexref hTexRef){
+CUresult CUDAAPI cuTexRefGetFilterMode(CUfilter_mode *pfm, CUtexref hTexRef){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -3386,7 +3386,7 @@ CUresult CUDAAPI cuTexRefGetFilterMode(CUfilter_mode *pfm, CUtexref hTexRef){
     return respError;
 }
 
-CUresult CUDAAPI cuTexRefGetFormat(CUarray_format *pFormat, int *pNumChannels, CUtexref hTexRef){
+CUresult CUDAAPI cuTexRefGetFormat(CUarray_format *pFormat, int *pNumChannels, CUtexref hTexRef){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -3417,7 +3417,7 @@ CUresult CUDAAPI cuTexRefGetFormat(CUarray_format *pFormat, int *pNumChannels, C
     return respError;
 }
 
-CUresult CUDAAPI cuTexRefGetFlags(unsigned int *pFlags, CUtexref hTexRef){
+CUresult CUDAAPI cuTexRefGetFlags(unsigned int *pFlags, CUtexref hTexRef){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -3445,7 +3445,7 @@ CUresult CUDAAPI cuTexRefGetFlags(unsigned int *pFlags, CUtexref hTexRef){
     return respError;
 }
 
-CUresult CUDAAPI cuTexRefCreate(CUtexref *pTexRef){
+CUresult CUDAAPI cuTexRefCreate(CUtexref *pTexRef){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -3472,7 +3472,7 @@ CUresult CUDAAPI cuTexRefCreate(CUtexref *pTexRef){
     return respError;
 }
 
-CUresult CUDAAPI cuTexRefDestroy(CUtexref hTexRef){
+CUresult CUDAAPI cuTexRefDestroy(CUtexref hTexRef){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -3497,7 +3497,7 @@ CUresult CUDAAPI cuTexRefDestroy(CUtexref hTexRef){
     return respError;
 }
 
-CUresult CUDAAPI cuSurfRefSetArray(CUsurfref hSurfRef, CUarray hArray, unsigned int Flags){
+CUresult CUDAAPI cuSurfRefSetArray(CUsurfref hSurfRef, CUarray hArray, unsigned int Flags){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -3524,7 +3524,7 @@ CUresult CUDAAPI cuSurfRefSetArray(CUsurfref hSurfRef, CUarray hArray, unsigned 
     return respError;
 }
 
-CUresult CUDAAPI cuSurfRefGetArray(CUarray *phArray, CUsurfref hSurfRef){
+CUresult CUDAAPI cuSurfRefGetArray(CUarray *phArray, CUsurfref hSurfRef){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -3552,7 +3552,7 @@ CUresult CUDAAPI cuSurfRefGetArray(CUarray *phArray, CUsurfref hSurfRef){
     return respError;
 }
 
-CUresult CUDAAPI cuDeviceCanAccessPeer(int *canAccessPeer, CUdevice dev, CUdevice peerDev){
+CUresult CUDAAPI cuDeviceCanAccessPeer(int *canAccessPeer, CUdevice dev, CUdevice peerDev){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -3581,7 +3581,7 @@ CUresult CUDAAPI cuDeviceCanAccessPeer(int *canAccessPeer, CUdevice dev, CUdevic
     return respError;
 }
 
-CUresult CUDAAPI cuCtxEnablePeerAccess(CUcontext peerContext, unsigned int Flags){
+CUresult CUDAAPI cuCtxEnablePeerAccess(CUcontext peerContext, unsigned int Flags){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -3607,7 +3607,7 @@ CUresult CUDAAPI cuCtxEnablePeerAccess(CUcontext peerContext, unsigned int Flags
     return respError;
 }
 
-CUresult CUDAAPI cuCtxDisablePeerAccess(CUcontext peerContext){
+CUresult CUDAAPI cuCtxDisablePeerAccess(CUcontext peerContext){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -3632,7 +3632,7 @@ CUresult CUDAAPI cuCtxDisablePeerAccess(CUcontext peerContext){
     return respError;
 }
 
-CUresult CUDAAPI cuGraphicsUnregisterResource(CUgraphicsResource resource){
+CUresult CUDAAPI cuGraphicsUnregisterResource(CUgraphicsResource resource){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -3657,7 +3657,7 @@ CUresult CUDAAPI cuGraphicsUnregisterResource(CUgraphicsResource resource){
     return respError;
 }
 
-CUresult CUDAAPI cuGraphicsSubResourceGetMappedArray(CUarray *pArray, CUgraphicsResource resource, unsigned int arrayIndex, unsigned int mipLevel){
+CUresult CUDAAPI cuGraphicsSubResourceGetMappedArray(CUarray *pArray, CUgraphicsResource resource, unsigned int arrayIndex, unsigned int mipLevel){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -3687,7 +3687,7 @@ CUresult CUDAAPI cuGraphicsSubResourceGetMappedArray(CUarray *pArray, CUgraphics
     return respError;
 }
 
-CUresult CUDAAPI cuGraphicsResourceGetMappedPointer(CUdeviceptr *pDevPtr, size_t *pSize, CUgraphicsResource resource){
+CUresult CUDAAPI cuGraphicsResourceGetMappedPointer(CUdeviceptr *pDevPtr, size_t *pSize, CUgraphicsResource resource){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -3718,7 +3718,7 @@ CUresult CUDAAPI cuGraphicsResourceGetMappedPointer(CUdeviceptr *pDevPtr, size_t
     return respError;
 }
 
-CUresult CUDAAPI cuGraphicsResourceSetMapFlags(CUgraphicsResource resource, unsigned int flags){
+CUresult CUDAAPI cuGraphicsResourceSetMapFlags(CUgraphicsResource resource, unsigned int flags){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -3744,7 +3744,7 @@ CUresult CUDAAPI cuGraphicsResourceSetMapFlags(CUgraphicsResource resource, unsi
     return respError;
 }
 
-CUresult CUDAAPI cuGraphicsMapResources(unsigned int count, CUgraphicsResource *resources, CUstream hStream){
+CUresult CUDAAPI cuGraphicsMapResources(unsigned int count, CUgraphicsResource *resources, CUstream hStream){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -3773,7 +3773,7 @@ CUresult CUDAAPI cuGraphicsMapResources(unsigned int count, CUgraphicsResource *
     return respError;
 }
 
-CUresult CUDAAPI cuGraphicsUnmapResources(unsigned int count, CUgraphicsResource *resources, CUstream hStream){
+CUresult CUDAAPI cuGraphicsUnmapResources(unsigned int count, CUgraphicsResource *resources, CUstream hStream){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -3802,7 +3802,7 @@ CUresult CUDAAPI cuGraphicsUnmapResources(unsigned int count, CUgraphicsResource
     return respError;
 }
 
-CUresult CUDAAPI cuGetExportTable(const void **ppExportTable, const CUuuid *pExportTableId){
+CUresult CUDAAPI cuGetExportTable(const void **ppExportTable, const CUuuid *pExportTableId){ VirtioSem objVirtioSem;
 
     CUresult respError = CUDA_ERROR_UNKNOWN;
 
@@ -3829,7 +3829,7 @@ CUresult CUDAAPI cuGetExportTable(const void **ppExportTable, const CUuuid *pExp
 }
 
 /* Fake functions from header faCuda_api.cpp (included from )*/
-__host__ cudaError_t CUDARTAPI cudaDeviceReset(void){
+__host__ cudaError_t CUDARTAPI cudaDeviceReset(void){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -3850,7 +3850,7 @@ __host__ cudaError_t CUDARTAPI cudaDeviceReset(void){
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaDeviceSynchronize(void){
+__host__ cudaError_t CUDARTAPI cudaDeviceSynchronize(void){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -3872,7 +3872,7 @@ __host__ cudaError_t CUDARTAPI cudaDeviceSynchronize(void){
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaDeviceSetLimit(enum cudaLimit limit, size_t value){
+__host__ cudaError_t CUDARTAPI cudaDeviceSetLimit(enum cudaLimit limit, size_t value){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -3898,7 +3898,7 @@ __host__ cudaError_t CUDARTAPI cudaDeviceSetLimit(enum cudaLimit limit, size_t v
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaDeviceGetLimit(size_t *pValue, enum cudaLimit limit){
+__host__ cudaError_t CUDARTAPI cudaDeviceGetLimit(size_t *pValue, enum cudaLimit limit){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -3926,7 +3926,7 @@ __host__ cudaError_t CUDARTAPI cudaDeviceGetLimit(size_t *pValue, enum cudaLimit
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaDeviceGetCacheConfig(enum cudaFuncCache *pCacheConfig){
+__host__ cudaError_t CUDARTAPI cudaDeviceGetCacheConfig(enum cudaFuncCache *pCacheConfig){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -3953,7 +3953,7 @@ __host__ cudaError_t CUDARTAPI cudaDeviceGetCacheConfig(enum cudaFuncCache *pCac
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaDeviceSetCacheConfig(enum cudaFuncCache cacheConfig){
+__host__ cudaError_t CUDARTAPI cudaDeviceSetCacheConfig(enum cudaFuncCache cacheConfig){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -3978,7 +3978,7 @@ __host__ cudaError_t CUDARTAPI cudaDeviceSetCacheConfig(enum cudaFuncCache cache
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaThreadExit(void){
+__host__ cudaError_t CUDARTAPI cudaThreadExit(void){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -4002,7 +4002,7 @@ __host__ cudaError_t CUDARTAPI cudaThreadExit(void){
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaThreadSynchronize(void){
+__host__ cudaError_t CUDARTAPI cudaThreadSynchronize(void){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -4026,7 +4026,7 @@ __host__ cudaError_t CUDARTAPI cudaThreadSynchronize(void){
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaThreadSetLimit(enum cudaLimit limit, size_t value){
+__host__ cudaError_t CUDARTAPI cudaThreadSetLimit(enum cudaLimit limit, size_t value){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -4052,7 +4052,7 @@ __host__ cudaError_t CUDARTAPI cudaThreadSetLimit(enum cudaLimit limit, size_t v
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaThreadGetLimit(size_t *pValue, enum cudaLimit limit){
+__host__ cudaError_t CUDARTAPI cudaThreadGetLimit(size_t *pValue, enum cudaLimit limit){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -4080,7 +4080,7 @@ __host__ cudaError_t CUDARTAPI cudaThreadGetLimit(size_t *pValue, enum cudaLimit
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaThreadGetCacheConfig(enum cudaFuncCache *pCacheConfig){
+__host__ cudaError_t CUDARTAPI cudaThreadGetCacheConfig(enum cudaFuncCache *pCacheConfig){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -4107,7 +4107,7 @@ __host__ cudaError_t CUDARTAPI cudaThreadGetCacheConfig(enum cudaFuncCache *pCac
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaThreadSetCacheConfig(enum cudaFuncCache cacheConfig){
+__host__ cudaError_t CUDARTAPI cudaThreadSetCacheConfig(enum cudaFuncCache cacheConfig){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -4132,7 +4132,7 @@ __host__ cudaError_t CUDARTAPI cudaThreadSetCacheConfig(enum cudaFuncCache cache
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaGetLastError(void){
+__host__ cudaError_t CUDARTAPI cudaGetLastError(void){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -4156,7 +4156,7 @@ __host__ cudaError_t CUDARTAPI cudaGetLastError(void){
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaPeekAtLastError(void){
+__host__ cudaError_t CUDARTAPI cudaPeekAtLastError(void){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -4180,7 +4180,7 @@ __host__ cudaError_t CUDARTAPI cudaPeekAtLastError(void){
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaGetDeviceCount(int *count){
+__host__ cudaError_t CUDARTAPI cudaGetDeviceCount(int *count){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -4207,7 +4207,7 @@ __host__ cudaError_t CUDARTAPI cudaGetDeviceCount(int *count){
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaGetDeviceProperties(struct cudaDeviceProp *prop, int device){
+__host__ cudaError_t CUDARTAPI cudaGetDeviceProperties(struct cudaDeviceProp *prop, int device){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -4232,7 +4232,7 @@ __host__ cudaError_t CUDARTAPI cudaGetDeviceProperties(struct cudaDeviceProp *pr
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaChooseDevice(int *device, const struct cudaDeviceProp *prop){
+__host__ cudaError_t CUDARTAPI cudaChooseDevice(int *device, const struct cudaDeviceProp *prop){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -4260,7 +4260,7 @@ __host__ cudaError_t CUDARTAPI cudaChooseDevice(int *device, const struct cudaDe
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaSetDevice(int device){
+__host__ cudaError_t CUDARTAPI cudaSetDevice(int device){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -4284,7 +4284,7 @@ __host__ cudaError_t CUDARTAPI cudaSetDevice(int device){
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaGetDevice(int *device){
+__host__ cudaError_t CUDARTAPI cudaGetDevice(int *device){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -4309,7 +4309,7 @@ __host__ cudaError_t CUDARTAPI cudaGetDevice(int *device){
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaSetValidDevices(int *device_arr, int len){
+__host__ cudaError_t CUDARTAPI cudaSetValidDevices(int *device_arr, int len){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -4337,7 +4337,7 @@ __host__ cudaError_t CUDARTAPI cudaSetValidDevices(int *device_arr, int len){
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaSetDeviceFlags( unsigned int flags ){
+__host__ cudaError_t CUDARTAPI cudaSetDeviceFlags( unsigned int flags ){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -4362,7 +4362,7 @@ __host__ cudaError_t CUDARTAPI cudaSetDeviceFlags( unsigned int flags ){
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaStreamCreate(cudaStream_t *pStream){
+__host__ cudaError_t CUDARTAPI cudaStreamCreate(cudaStream_t *pStream){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -4389,7 +4389,7 @@ __host__ cudaError_t CUDARTAPI cudaStreamCreate(cudaStream_t *pStream){
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaStreamDestroy(cudaStream_t stream){
+__host__ cudaError_t CUDARTAPI cudaStreamDestroy(cudaStream_t stream){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -4414,7 +4414,7 @@ __host__ cudaError_t CUDARTAPI cudaStreamDestroy(cudaStream_t stream){
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaStreamWaitEvent(cudaStream_t stream, cudaEvent_t event, unsigned int flags){
+__host__ cudaError_t CUDARTAPI cudaStreamWaitEvent(cudaStream_t stream, cudaEvent_t event, unsigned int flags){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -4441,7 +4441,7 @@ __host__ cudaError_t CUDARTAPI cudaStreamWaitEvent(cudaStream_t stream, cudaEven
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaStreamSynchronize(cudaStream_t stream){
+__host__ cudaError_t CUDARTAPI cudaStreamSynchronize(cudaStream_t stream){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -4466,7 +4466,7 @@ __host__ cudaError_t CUDARTAPI cudaStreamSynchronize(cudaStream_t stream){
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaStreamQuery(cudaStream_t stream){
+__host__ cudaError_t CUDARTAPI cudaStreamQuery(cudaStream_t stream){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -4491,7 +4491,7 @@ __host__ cudaError_t CUDARTAPI cudaStreamQuery(cudaStream_t stream){
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaEventCreate(cudaEvent_t *event){
+__host__ cudaError_t CUDARTAPI cudaEventCreate(cudaEvent_t *event){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -4515,7 +4515,7 @@ __host__ cudaError_t CUDARTAPI cudaEventCreate(cudaEvent_t *event){
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaEventCreateWithFlags(cudaEvent_t *event, unsigned int flags){
+__host__ cudaError_t CUDARTAPI cudaEventCreateWithFlags(cudaEvent_t *event, unsigned int flags){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -4543,7 +4543,7 @@ __host__ cudaError_t CUDARTAPI cudaEventCreateWithFlags(cudaEvent_t *event, unsi
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaEventRecord(cudaEvent_t event, cudaStream_t stream){
+__host__ cudaError_t CUDARTAPI cudaEventRecord(cudaEvent_t event, cudaStream_t stream){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -4567,7 +4567,7 @@ __host__ cudaError_t CUDARTAPI cudaEventRecord(cudaEvent_t event, cudaStream_t s
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaEventQuery(cudaEvent_t event){
+__host__ cudaError_t CUDARTAPI cudaEventQuery(cudaEvent_t event){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -4592,7 +4592,7 @@ __host__ cudaError_t CUDARTAPI cudaEventQuery(cudaEvent_t event){
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaEventSynchronize(cudaEvent_t event){
+__host__ cudaError_t CUDARTAPI cudaEventSynchronize(cudaEvent_t event){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -4615,7 +4615,7 @@ __host__ cudaError_t CUDARTAPI cudaEventSynchronize(cudaEvent_t event){
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaEventDestroy(cudaEvent_t event){
+__host__ cudaError_t CUDARTAPI cudaEventDestroy(cudaEvent_t event){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -4638,7 +4638,7 @@ __host__ cudaError_t CUDARTAPI cudaEventDestroy(cudaEvent_t event){
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaEventElapsedTime(float *ms, cudaEvent_t start, cudaEvent_t end){
+__host__ cudaError_t CUDARTAPI cudaEventElapsedTime(float *ms, cudaEvent_t start, cudaEvent_t end){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -4665,10 +4665,9 @@ __host__ cudaError_t CUDARTAPI cudaEventElapsedTime(float *ms, cudaEvent_t start
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaSetupArgument(const void *arg, size_t size, size_t offset){
-    
+__host__ cudaError_t CUDARTAPI cudaSetupArgument(const void *arg, size_t size, size_t offset){ VirtioSem objVirtioSem;
     //fprintf(stderr, "Called cudaSetupArgument with size %d offset %d\n", size, offset);
-
+	//fprintf(stderr,"*cudaSetupArgument\n");
     cudaError_t respError;
 
     struct cudaSetupArgumentStruct *msg_p = (struct cudaSetupArgumentStruct*) memptr;
@@ -4681,7 +4680,7 @@ __host__ cudaError_t CUDARTAPI cudaSetupArgument(const void *arg, size_t size, s
 
     uint8_t *dst = (((uint8_t*)msg_p) + sizeof(struct cudaSetupArgumentStruct));
     int i;
-    for(i = 0; i < size; i++){
+    for(i = 0; i < size; i++){ 
         dst[i] = ((uint8_t*)arg)[i];
         //fprintf(stderr, "pushing %x\n", dst[i]);
     }
@@ -4700,7 +4699,7 @@ __host__ cudaError_t CUDARTAPI cudaSetupArgument(const void *arg, size_t size, s
 
 }
 
-__host__ cudaError_t CUDARTAPI cudaFuncSetCacheConfig(const char *func, enum cudaFuncCache cacheConfig){
+__host__ cudaError_t CUDARTAPI cudaFuncSetCacheConfig(const char *func, enum cudaFuncCache cacheConfig){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -4710,7 +4709,7 @@ __host__ cudaError_t CUDARTAPI cudaFuncSetCacheConfig(const char *func, enum cud
 
     char* src = (char*) func;
     char* dst = msg_p->func;
-    while(*src != '\0'){
+    while(*src != '\0'){ 
         *dst = *src;
         dst++;
         src++;
@@ -4733,8 +4732,9 @@ __host__ cudaError_t CUDARTAPI cudaFuncSetCacheConfig(const char *func, enum cud
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaConfigureCall(dim3 gridDim, dim3 blockDim, size_t sharedMem, cudaStream_t stream){
-
+__host__ cudaError_t CUDARTAPI cudaConfigureCall(dim3 gridDim, dim3 blockDim, size_t sharedMem, cudaStream_t stream){ VirtioSem objVirtioSem;
+		
+	//fprintf(stderr,"*cudaConfigureCall\n");
     /*fprintf(stdout, "Called cudaConfigureCall() with\ngridDim {%d, %d, %d}\nblockDim {%d, %d, %d}\nsharedMem %d\nstream %d\n", 
             gridDim.x, 
             gridDim.y, 
@@ -4771,8 +4771,9 @@ __host__ cudaError_t CUDARTAPI cudaConfigureCall(dim3 gridDim, dim3 blockDim, si
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaLaunch(const void *entry){
-
+__host__ cudaError_t CUDARTAPI cudaLaunch(const void *entry){ VirtioSem objVirtioSem;
+	
+	//fprintf(stderr,"*cudaLaunch\n");
     cudaError_t respError;
 
     struct cudaLaunchStruct *msg_p = (struct cudaLaunchStruct*) memptr;
@@ -4781,7 +4782,7 @@ __host__ cudaError_t CUDARTAPI cudaLaunch(const void *entry){
  
     char* src = (char*)entry;
     char* dst = msg_p->entryString;
-    while(*src != '\0'){
+    while(*src != '\0'){ 
         *dst = *src;
         dst++;
         src++;
@@ -4801,7 +4802,7 @@ __host__ cudaError_t CUDARTAPI cudaLaunch(const void *entry){
 
     respError = msg_p->callheader.respError;
 
-    if (respError != cudaSuccess){
+    if (respError != cudaSuccess){ 
         
         fprintf(stderr, "Kernel launch failed! (%d)\n", respError);
     }
@@ -4810,7 +4811,7 @@ __host__ cudaError_t CUDARTAPI cudaLaunch(const void *entry){
 
 }
 
-__host__ cudaError_t CUDARTAPI cudaFuncGetAttributes(struct cudaFuncAttributes *attr, const char *func){
+__host__ cudaError_t CUDARTAPI cudaFuncGetAttributes(struct cudaFuncAttributes *attr, const char *func){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -4821,7 +4822,7 @@ __host__ cudaError_t CUDARTAPI cudaFuncGetAttributes(struct cudaFuncAttributes *
     msg_p->attr = *attr;
     char* src = (char*) func;
     char* dst = msg_p->func;
-    while(*src != '\0'){
+    while(*src != '\0'){ 
         *dst = *src;
         dst++;
         src++;
@@ -4845,7 +4846,7 @@ __host__ cudaError_t CUDARTAPI cudaFuncGetAttributes(struct cudaFuncAttributes *
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaSetDoubleForDevice(double *d){
+__host__ cudaError_t CUDARTAPI cudaSetDoubleForDevice(double *d){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -4872,7 +4873,7 @@ __host__ cudaError_t CUDARTAPI cudaSetDoubleForDevice(double *d){
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaSetDoubleForHost(double *d){
+__host__ cudaError_t CUDARTAPI cudaSetDoubleForHost(double *d){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -4899,8 +4900,9 @@ __host__ cudaError_t CUDARTAPI cudaSetDoubleForHost(double *d){
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaMalloc(void **devPtr, size_t size){
+__host__ cudaError_t CUDARTAPI cudaMalloc(void **devPtr, size_t size){ VirtioSem objVirtioSem;
 
+	//fprintf(stderr,"*cudaMalloc\n");
     cudaError_t respError = cudaErrorApiFailureBase;
     size_t sent;
 
@@ -4921,11 +4923,10 @@ __host__ cudaError_t CUDARTAPI cudaMalloc(void **devPtr, size_t size){
     *devPtr = msg_p->devPtr;
     respError = msg_p->callheader.respError;
 
-
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaMallocHost(void **ptr, size_t size){
+__host__ cudaError_t CUDARTAPI cudaMallocHost(void **ptr, size_t size){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -4952,7 +4953,7 @@ __host__ cudaError_t CUDARTAPI cudaMallocHost(void **ptr, size_t size){
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaMallocPitch(void **devPtr, size_t *pitch, size_t width, size_t height){
+__host__ cudaError_t CUDARTAPI cudaMallocPitch(void **devPtr, size_t *pitch, size_t width, size_t height){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -4983,8 +4984,11 @@ __host__ cudaError_t CUDARTAPI cudaMallocPitch(void **devPtr, size_t *pitch, siz
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaFree(void *devPtr){
+__host__ cudaError_t CUDARTAPI cudaFree(void *devPtr){ VirtioSem objVirtioSem;
 
+
+	
+	//fprintf(stderr,"*cudaFree\n");
     cudaError_t respError = cudaErrorApiFailureBase;
     size_t sent;
 
@@ -5005,11 +5009,11 @@ __host__ cudaError_t CUDARTAPI cudaFree(void *devPtr){
     devPtr = msg_p->devPtr;
     respError = msg_p->callheader.respError;
 
-
+	
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaFreeHost(void *ptr){
+__host__ cudaError_t CUDARTAPI cudaFreeHost(void *ptr){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -5035,7 +5039,7 @@ __host__ cudaError_t CUDARTAPI cudaFreeHost(void *ptr){
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaFreeArray(struct cudaArray *array){
+__host__ cudaError_t CUDARTAPI cudaFreeArray(struct cudaArray *array){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -5060,7 +5064,7 @@ __host__ cudaError_t CUDARTAPI cudaFreeArray(struct cudaArray *array){
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaHostAlloc(void **pHost, size_t size, unsigned int flags){
+__host__ cudaError_t CUDARTAPI cudaHostAlloc(void **pHost, size_t size, unsigned int flags){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -5086,7 +5090,7 @@ __host__ cudaError_t CUDARTAPI cudaHostAlloc(void **pHost, size_t size, unsigned
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaHostRegister(void *ptr, size_t size, unsigned int flags){
+__host__ cudaError_t CUDARTAPI cudaHostRegister(void *ptr, size_t size, unsigned int flags){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -5114,7 +5118,7 @@ __host__ cudaError_t CUDARTAPI cudaHostRegister(void *ptr, size_t size, unsigned
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaHostUnregister(void *ptr){
+__host__ cudaError_t CUDARTAPI cudaHostUnregister(void *ptr){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -5140,7 +5144,7 @@ __host__ cudaError_t CUDARTAPI cudaHostUnregister(void *ptr){
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaHostGetDevicePointer(void **pDevice, void *pHost, unsigned int flags){
+__host__ cudaError_t CUDARTAPI cudaHostGetDevicePointer(void **pDevice, void *pHost, unsigned int flags){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -5169,7 +5173,7 @@ __host__ cudaError_t CUDARTAPI cudaHostGetDevicePointer(void **pDevice, void *pH
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaHostGetFlags(unsigned int *pFlags, void *pHost){
+__host__ cudaError_t CUDARTAPI cudaHostGetFlags(unsigned int *pFlags, void *pHost){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -5198,7 +5202,7 @@ __host__ cudaError_t CUDARTAPI cudaHostGetFlags(unsigned int *pFlags, void *pHos
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaMalloc3D(struct cudaPitchedPtr* pitchedDevPtr, struct cudaExtent extent){
+__host__ cudaError_t CUDARTAPI cudaMalloc3D(struct cudaPitchedPtr* pitchedDevPtr, struct cudaExtent extent){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -5226,7 +5230,7 @@ __host__ cudaError_t CUDARTAPI cudaMalloc3D(struct cudaPitchedPtr* pitchedDevPtr
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaMemcpy3D(const struct cudaMemcpy3DParms *p){
+__host__ cudaError_t CUDARTAPI cudaMemcpy3D(const struct cudaMemcpy3DParms *p){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -5251,7 +5255,7 @@ __host__ cudaError_t CUDARTAPI cudaMemcpy3D(const struct cudaMemcpy3DParms *p){
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaMemcpy3DPeer(const struct cudaMemcpy3DPeerParms *p){
+__host__ cudaError_t CUDARTAPI cudaMemcpy3DPeer(const struct cudaMemcpy3DPeerParms *p){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -5276,7 +5280,7 @@ __host__ cudaError_t CUDARTAPI cudaMemcpy3DPeer(const struct cudaMemcpy3DPeerPar
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaMemGetInfo(size_t *free_, size_t *total){
+__host__ cudaError_t CUDARTAPI cudaMemGetInfo(size_t *free_, size_t *total){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -5308,15 +5312,16 @@ __host__ cudaError_t CUDARTAPI cudaMemGetInfo(size_t *free_, size_t *total){
 
 /* We have to write these memory copying routines manually due to the complexity of the data being 
  * transferred. */
-__host__ cudaError_t CUDARTAPI cudaMemcpy(void *dst, const void *src, size_t count, enum cudaMemcpyKind kind){
+__host__ cudaError_t CUDARTAPI cudaMemcpy(void *dst, const void *src, size_t count, enum cudaMemcpyKind kind){ VirtioSem objVirtioSem;
     //clock_t begin,end;
     //double time_spent;
     //begin = clock();
+   // fprintf(stderr,"*cudaMemcpy\n");
     int i;
     cudaError_t respError = cudaErrorApiFailureBase;
     struct cudaMemcpyStruct *msg_p;
 	bool bOutOfSharedMemory = true;
-    switch(kind){
+    switch(kind){ 
         case cudaMemcpyHostToHost:
 
             memcpy(dst,src,count);
@@ -5336,7 +5341,7 @@ __host__ cudaError_t CUDARTAPI cudaMemcpy(void *dst, const void *src, size_t cou
             msg_p->kind = kind;
             //begin = clock();
             //memcpy(memptr+sizeof(struct cudaMemcpyStruct),src,count);
-            if(src<memptr||src>memend){ 
+            if(src<memptr||src>memend){ ; 
                 //printf("culprit");
                 offset=0;
                 memcpy(memptr+sizeof(struct cudaMemcpyStruct),src,count);
@@ -5348,7 +5353,7 @@ __host__ cudaError_t CUDARTAPI cudaMemcpy(void *dst, const void *src, size_t cou
             }
             //printf("off : %u\n", src);
             //printf("off1 : %u\n", offset1);
-            //for(i = 0; i < count; i++){
+            //for(i = 0; i < count; i++){ ;
             //    ((uint8_t*)msg_p)[msg_p->offset + i] = ((uint8_t*)src)[i];
            // }
             //clock_t begin,end;
@@ -5380,7 +5385,7 @@ __host__ cudaError_t CUDARTAPI cudaMemcpy(void *dst, const void *src, size_t cou
             msg_p->count = count;
             msg_p->kind = kind;
             //begin = clock();
-            if (dst<memptr||dst>memend){
+            if (dst<memptr||dst>memend){ ;
                 //printf("culprit");
                 offset = 0;
             }
@@ -5410,7 +5415,7 @@ __host__ cudaError_t CUDARTAPI cudaMemcpy(void *dst, const void *src, size_t cou
             //
             if ( (offset == 0) && bOutOfSharedMemory)
             	memcpy(dst,memptr+sizeof(struct cudaMemcpyStruct),count);
-            //for(i = 0; i < count; i++){
+            //for(i = 0; i < count; i++){ 
             //    ((uint8_t*)dst)[i] = ((uint8_t*)msg_p)[sizeof(struct cudaMemcpyStruct) + i];
             //}
             //end = clock();
@@ -5454,7 +5459,7 @@ __host__ cudaError_t CUDARTAPI cudaMemcpy(void *dst, const void *src, size_t cou
 
 }
 
-__host__ cudaError_t CUDARTAPI cudaMemcpyPeer(void *dst, int dstDevice, const void *src, int srcDevice, size_t count){
+__host__ cudaError_t CUDARTAPI cudaMemcpyPeer(void *dst, int dstDevice, const void *src, int srcDevice, size_t count){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -5484,7 +5489,7 @@ __host__ cudaError_t CUDARTAPI cudaMemcpyPeer(void *dst, int dstDevice, const vo
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaMemcpyToArray(struct cudaArray *dst, size_t wOffset, size_t hOffset, const void *src, size_t count, enum cudaMemcpyKind kind){
+__host__ cudaError_t CUDARTAPI cudaMemcpyToArray(struct cudaArray *dst, size_t wOffset, size_t hOffset, const void *src, size_t count, enum cudaMemcpyKind kind){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -5514,7 +5519,7 @@ __host__ cudaError_t CUDARTAPI cudaMemcpyToArray(struct cudaArray *dst, size_t w
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaMemcpyFromArray(void *dst, const struct cudaArray *src, size_t wOffset, size_t hOffset, size_t count, enum cudaMemcpyKind kind){
+__host__ cudaError_t CUDARTAPI cudaMemcpyFromArray(void *dst, const struct cudaArray *src, size_t wOffset, size_t hOffset, size_t count, enum cudaMemcpyKind kind){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -5545,7 +5550,7 @@ __host__ cudaError_t CUDARTAPI cudaMemcpyFromArray(void *dst, const struct cudaA
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaMemcpy2D(void *dst, size_t dpitch, const void *src, size_t spitch, size_t width, size_t height, enum cudaMemcpyKind kind){
+__host__ cudaError_t CUDARTAPI cudaMemcpy2D(void *dst, size_t dpitch, const void *src, size_t spitch, size_t width, size_t height, enum cudaMemcpyKind kind){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -5577,7 +5582,7 @@ __host__ cudaError_t CUDARTAPI cudaMemcpy2D(void *dst, size_t dpitch, const void
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaMemcpy2DToArray(struct cudaArray *dst, size_t wOffset, size_t hOffset, const void *src, size_t spitch, size_t width, size_t height, enum cudaMemcpyKind kind){
+__host__ cudaError_t CUDARTAPI cudaMemcpy2DToArray(struct cudaArray *dst, size_t wOffset, size_t hOffset, const void *src, size_t spitch, size_t width, size_t height, enum cudaMemcpyKind kind){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -5609,7 +5614,7 @@ __host__ cudaError_t CUDARTAPI cudaMemcpy2DToArray(struct cudaArray *dst, size_t
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaMemcpy2DFromArray(void *dst, size_t dpitch, const struct cudaArray *src, size_t wOffset, size_t hOffset, size_t width, size_t height, enum cudaMemcpyKind kind){
+__host__ cudaError_t CUDARTAPI cudaMemcpy2DFromArray(void *dst, size_t dpitch, const struct cudaArray *src, size_t wOffset, size_t hOffset, size_t width, size_t height, enum cudaMemcpyKind kind){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -5642,7 +5647,7 @@ __host__ cudaError_t CUDARTAPI cudaMemcpy2DFromArray(void *dst, size_t dpitch, c
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaMemset(void *devPtr, int value, size_t count){
+__host__ cudaError_t CUDARTAPI cudaMemset(void *devPtr, int value, size_t count){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -5670,7 +5675,7 @@ __host__ cudaError_t CUDARTAPI cudaMemset(void *devPtr, int value, size_t count)
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaMemset2D(void *devPtr, size_t pitch, int value, size_t width, size_t height){
+__host__ cudaError_t CUDARTAPI cudaMemset2D(void *devPtr, size_t pitch, int value, size_t width, size_t height){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -5700,7 +5705,7 @@ __host__ cudaError_t CUDARTAPI cudaMemset2D(void *devPtr, size_t pitch, int valu
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaMemset3D(struct cudaPitchedPtr pitchedDevPtr, int value, struct cudaExtent extent){
+__host__ cudaError_t CUDARTAPI cudaMemset3D(struct cudaPitchedPtr pitchedDevPtr, int value, struct cudaExtent extent){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -5727,7 +5732,7 @@ __host__ cudaError_t CUDARTAPI cudaMemset3D(struct cudaPitchedPtr pitchedDevPtr,
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaGetSymbolAddress(void **devPtr, const char *symbol){
+__host__ cudaError_t CUDARTAPI cudaGetSymbolAddress(void **devPtr, const char *symbol){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -5738,7 +5743,7 @@ __host__ cudaError_t CUDARTAPI cudaGetSymbolAddress(void **devPtr, const char *s
     msg_p->devPtr = (void*) *devPtr;
     char* src = (char*) symbol;
     char* dst = msg_p->symbol;
-    while(*src != '\0'){
+    while(*src != '\0'){ 
         *dst = *src;
         dst++;
         src++;
@@ -5761,7 +5766,7 @@ __host__ cudaError_t CUDARTAPI cudaGetSymbolAddress(void **devPtr, const char *s
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaGetSymbolSize(size_t *size, const char *symbol){
+__host__ cudaError_t CUDARTAPI cudaGetSymbolSize(size_t *size, const char *symbol){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -5772,7 +5777,7 @@ __host__ cudaError_t CUDARTAPI cudaGetSymbolSize(size_t *size, const char *symbo
     msg_p->size = *size;
     char* src = (char*) symbol;
     char* dst = msg_p->symbol;
-    while(*src != '\0'){
+    while(*src != '\0'){ 
         *dst = *src;
         dst++;
         src++;
@@ -5796,7 +5801,7 @@ __host__ cudaError_t CUDARTAPI cudaGetSymbolSize(size_t *size, const char *symbo
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaPointerGetAttributes(struct cudaPointerAttributes *attributes, void *ptr){
+__host__ cudaError_t CUDARTAPI cudaPointerGetAttributes(struct cudaPointerAttributes *attributes, void *ptr){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -5825,7 +5830,7 @@ __host__ cudaError_t CUDARTAPI cudaPointerGetAttributes(struct cudaPointerAttrib
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaDeviceCanAccessPeer(int *canAccessPeer, int device, int peerDevice){
+__host__ cudaError_t CUDARTAPI cudaDeviceCanAccessPeer(int *canAccessPeer, int device, int peerDevice){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -5854,7 +5859,7 @@ __host__ cudaError_t CUDARTAPI cudaDeviceCanAccessPeer(int *canAccessPeer, int d
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaDeviceEnablePeerAccess(int peerDevice, unsigned int flags){
+__host__ cudaError_t CUDARTAPI cudaDeviceEnablePeerAccess(int peerDevice, unsigned int flags){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -5880,7 +5885,7 @@ __host__ cudaError_t CUDARTAPI cudaDeviceEnablePeerAccess(int peerDevice, unsign
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaDeviceDisablePeerAccess(int peerDevice){
+__host__ cudaError_t CUDARTAPI cudaDeviceDisablePeerAccess(int peerDevice){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -5905,7 +5910,7 @@ __host__ cudaError_t CUDARTAPI cudaDeviceDisablePeerAccess(int peerDevice){
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaGraphicsUnregisterResource(cudaGraphicsResource_t resource){
+__host__ cudaError_t CUDARTAPI cudaGraphicsUnregisterResource(cudaGraphicsResource_t resource){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -5930,7 +5935,7 @@ __host__ cudaError_t CUDARTAPI cudaGraphicsUnregisterResource(cudaGraphicsResour
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaGraphicsResourceSetMapFlags(cudaGraphicsResource_t resource, unsigned int flags){
+__host__ cudaError_t CUDARTAPI cudaGraphicsResourceSetMapFlags(cudaGraphicsResource_t resource, unsigned int flags){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -5956,7 +5961,7 @@ __host__ cudaError_t CUDARTAPI cudaGraphicsResourceSetMapFlags(cudaGraphicsResou
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaGraphicsResourceGetMappedPointer(void **devPtr, size_t *size, cudaGraphicsResource_t resource){
+__host__ cudaError_t CUDARTAPI cudaGraphicsResourceGetMappedPointer(void **devPtr, size_t *size, cudaGraphicsResource_t resource){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -5986,7 +5991,7 @@ __host__ cudaError_t CUDARTAPI cudaGraphicsResourceGetMappedPointer(void **devPt
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaGraphicsSubResourceGetMappedArray(struct cudaArray **array, cudaGraphicsResource_t resource, unsigned int arrayIndex, unsigned int mipLevel){
+__host__ cudaError_t CUDARTAPI cudaGraphicsSubResourceGetMappedArray(struct cudaArray **array, cudaGraphicsResource_t resource, unsigned int arrayIndex, unsigned int mipLevel){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -6014,7 +6019,7 @@ __host__ cudaError_t CUDARTAPI cudaGraphicsSubResourceGetMappedArray(struct cuda
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaGetChannelDesc(struct cudaChannelFormatDesc *desc, const struct cudaArray *array){
+__host__ cudaError_t CUDARTAPI cudaGetChannelDesc(struct cudaChannelFormatDesc *desc, const struct cudaArray *array){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -6042,7 +6047,7 @@ __host__ cudaError_t CUDARTAPI cudaGetChannelDesc(struct cudaChannelFormatDesc *
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaBindTexture2D(size_t *offset, const struct textureReference *texref, const void *devPtr, const struct cudaChannelFormatDesc *desc, size_t width, size_t height, size_t pitch){
+__host__ cudaError_t CUDARTAPI cudaBindTexture2D(size_t *offset, const struct textureReference *texref, const void *devPtr, const struct cudaChannelFormatDesc *desc, size_t width, size_t height, size_t pitch){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -6075,7 +6080,7 @@ __host__ cudaError_t CUDARTAPI cudaBindTexture2D(size_t *offset, const struct te
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaBindTextureToArray(const struct textureReference *texref, const struct cudaArray *array, const struct cudaChannelFormatDesc *desc){
+__host__ cudaError_t CUDARTAPI cudaBindTextureToArray(const struct textureReference *texref, const struct cudaArray *array, const struct cudaChannelFormatDesc *desc){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -6102,7 +6107,7 @@ __host__ cudaError_t CUDARTAPI cudaBindTextureToArray(const struct textureRefere
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaUnbindTexture(const struct textureReference *texref){
+__host__ cudaError_t CUDARTAPI cudaUnbindTexture(const struct textureReference *texref){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -6127,7 +6132,7 @@ __host__ cudaError_t CUDARTAPI cudaUnbindTexture(const struct textureReference *
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaGetTextureAlignmentOffset(size_t *offset, const struct textureReference *texref){
+__host__ cudaError_t CUDARTAPI cudaGetTextureAlignmentOffset(size_t *offset, const struct textureReference *texref){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -6155,7 +6160,7 @@ __host__ cudaError_t CUDARTAPI cudaGetTextureAlignmentOffset(size_t *offset, con
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaGetTextureReference(const struct textureReference **texref, const char *symbol){
+__host__ cudaError_t CUDARTAPI cudaGetTextureReference(const struct textureReference **texref, const char *symbol){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -6165,7 +6170,7 @@ __host__ cudaError_t CUDARTAPI cudaGetTextureReference(const struct textureRefer
 
     char* src = (char*) symbol;
     char* dst = msg_p->symbol;
-    while(*src != '\0'){
+    while(*src != '\0'){ 
         *dst = *src;
         dst++;
         src++;
@@ -6187,7 +6192,7 @@ __host__ cudaError_t CUDARTAPI cudaGetTextureReference(const struct textureRefer
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaBindSurfaceToArray(const struct surfaceReference *surfref, const struct cudaArray *array, const struct cudaChannelFormatDesc *desc){
+__host__ cudaError_t CUDARTAPI cudaBindSurfaceToArray(const struct surfaceReference *surfref, const struct cudaArray *array, const struct cudaChannelFormatDesc *desc){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -6214,7 +6219,7 @@ __host__ cudaError_t CUDARTAPI cudaBindSurfaceToArray(const struct surfaceRefere
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaGetSurfaceReference(const struct surfaceReference **surfref, const char *symbol){
+__host__ cudaError_t CUDARTAPI cudaGetSurfaceReference(const struct surfaceReference **surfref, const char *symbol){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -6224,7 +6229,7 @@ __host__ cudaError_t CUDARTAPI cudaGetSurfaceReference(const struct surfaceRefer
 
     char* src = (char*) symbol;
     char* dst = msg_p->symbol;
-    while(*src != '\0'){
+    while(*src != '\0'){ 
         *dst = *src;
         dst++;
         src++;
@@ -6246,7 +6251,7 @@ __host__ cudaError_t CUDARTAPI cudaGetSurfaceReference(const struct surfaceRefer
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaDriverGetVersion(int *driverVersion){
+__host__ cudaError_t CUDARTAPI cudaDriverGetVersion(int *driverVersion){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -6273,7 +6278,7 @@ __host__ cudaError_t CUDARTAPI cudaDriverGetVersion(int *driverVersion){
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaRuntimeGetVersion(int *runtimeVersion){
+__host__ cudaError_t CUDARTAPI cudaRuntimeGetVersion(int *runtimeVersion){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 
@@ -6300,7 +6305,7 @@ __host__ cudaError_t CUDARTAPI cudaRuntimeGetVersion(int *runtimeVersion){
     return respError;
 }
 
-__host__ cudaError_t CUDARTAPI cudaGetExportTable(const void **ppExportTable, const cudaUUID_t *pExportTableId){
+__host__ cudaError_t CUDARTAPI cudaGetExportTable(const void **ppExportTable, const cudaUUID_t *pExportTableId){ VirtioSem objVirtioSem;
 
     cudaError_t respError = cudaErrorApiFailureBase;
 

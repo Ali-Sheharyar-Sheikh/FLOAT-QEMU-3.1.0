@@ -1,6 +1,8 @@
 #include <stdio.h>
+#include <thread>
+#include <chrono>
 
-__global__ void add(int* a, int* b, int* c)
+__global__ void add2(int* a, int* b, int* c)
 {
     printf("Param a value: %d\n",*a);
     printf("Param b value: %d\n",*b);
@@ -8,12 +10,15 @@ __global__ void add(int* a, int* b, int* c)
     printf("Result c value: %d\n",*c);
 }
 
-int main()
+int main(int argc, char** argv)
 {
     int *a,*b,*c; // host copies of a,b,c
     int *d_a,*d_b,*d_c; // device copies of a,b,c
     int size = sizeof(int);
-
+	int nKernelMaxLimit = 50;
+	if(argc>1)
+		nKernelMaxLimit = atoi(argv[1]);
+	
     // allocate space for device copies of a,b,c
     cudaError_t error_id = cudaMalloc((void**)&d_a,size);
     if (error_id != cudaSuccess)
@@ -29,16 +34,20 @@ int main()
     a = (int*)malloc(sizeof(int));
     b = (int*)malloc(sizeof(int));
     c = (int*)malloc(sizeof(int));
-    *a=300;
-    *b=117;
+    
+    for(int i=1;i<nKernelMaxLimit;i++)
+    {
+   
+   	*a=i;
+   	*b=5;
 
     // copy inputs to device
     cudaMemcpy(d_a,a,size,cudaMemcpyHostToDevice);
     cudaMemcpy(d_b,b,size,cudaMemcpyHostToDevice);
-    cudaMemcpy(d_c,c,size,cudaMemcpyHostToDevice);
+    //cudaMemcpy(d_c,c,size,cudaMemcpyHostToDevice);
 
-    // launch add() kernel on GPU
-    add<<<1,1>>>(d_a,d_b,d_c);
+    // launch add1() kernel on GPU
+    add2<<<1,1>>>(d_a,d_b,d_c);
 
     // copy result back to host
     cudaMemcpy(c,d_c,size,cudaMemcpyDeviceToHost);
@@ -46,6 +55,10 @@ int main()
 	fprintf(stderr,"HOST computation!\n");
     fprintf(stderr,"A: %d + B: %d\n",*a,*b);
 	fprintf(stderr,"Result C: %d.\n",*c);
+   
+   	std::this_thread::sleep_for(std::chrono::milliseconds(250));
+   
+    }
     
 	free(a);
 	free(b);
