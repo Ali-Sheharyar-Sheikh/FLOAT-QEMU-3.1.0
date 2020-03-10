@@ -2,6 +2,14 @@
 
 AKA FLOAT 2.0
 
+# ** BUILD INSTRUCTIONS **
+
+// OS   : Ubuntu 18.04
+// GCC  : 5
+// CUDA : 9.2
+
+host-side/Notes.txt
+
 
 
 
